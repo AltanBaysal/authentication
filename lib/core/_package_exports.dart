@@ -9,3 +9,4 @@ export 'package:dio/dio.dart';
 export 'package:flutter/services.dart';
 export 'package:firebase_core/firebase_core.dart';
 export 'package:authentication/feature/_feature_exports.dart';
+export 'package:authentication/firebase_options.dart';

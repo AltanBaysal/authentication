@@ -2,7 +2,9 @@ import 'package:authentication/core/_core_exports.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   await init();
   runApp(const ChatAI());
 }
