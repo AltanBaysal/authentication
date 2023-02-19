@@ -8,3 +8,4 @@ export 'package:internet_connection_checker/internet_connection_checker.dart';
 export 'package:dio/dio.dart';
 export 'package:flutter/services.dart';
 export 'package:firebase_core/firebase_core.dart';
+export 'package:authentication/feature/_feature_exports.dart';

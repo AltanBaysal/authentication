@@ -1,4 +1,4 @@
-import '../../_core_exports.dart';
+import 'package:authentication/core/_core_exports.dart';
 
 class AppColors {
   static const Color darkPurple = Color.fromARGB(255, 30, 35, 44);

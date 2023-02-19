@@ -1,4 +1,4 @@
-import 'package:chat_ai/core/_core_exports.dart';
+import 'package:authentication/core/_core_exports.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -32,6 +32,7 @@ class LandingPage extends StatelessWidget {
 
 
 //flutter theme
+//auto login
 //fonts
 //provider
 //clean architecture

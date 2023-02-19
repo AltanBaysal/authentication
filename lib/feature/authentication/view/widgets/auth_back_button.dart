@@ -1,4 +1,4 @@
-import 'package:chat_ai/core/_core_exports.dart';
+import 'package:authentication/core/_core_exports.dart';
 
 class AuthBackButton extends StatelessWidget {
   const AuthBackButton({
