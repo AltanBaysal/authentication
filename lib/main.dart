@@ -28,16 +28,16 @@ class LandingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     sl<ScreenSize>().screenSize = MediaQuery.of(context);
-    return const PasswordChangedPage();
+    return const ForgotPasswordPage();
   }
 }
 
 
-//flutter theme
+//riverpod
 //auto login
-//fonts
-//provider
-//clean architecture
+//fonts+
+//get it - dependency injection+
+//clean architecture+
 //flutter routes
 //dio
 //functional programing
