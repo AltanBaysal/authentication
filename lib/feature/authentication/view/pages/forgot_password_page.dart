@@ -1,10 +1,10 @@
 import 'package:authentication/core/_core_exports.dart';
 
-class ForgotPasswordPage extends StatelessWidget {
+class ForgotPasswordPage extends ConsumerWidget {
   const ForgotPasswordPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return BaseAuthenticationPage(children: [
       const Align(
         alignment: Alignment.centerLeft,
@@ -28,16 +28,23 @@ class ForgotPasswordPage extends StatelessWidget {
       CustomTextField(
         hintText: AppTexts.enterYourEmail,
         height: sl<ScreenSize>().getHeightPercent(.072),
+        controller: ref
+            .read(Providers.forgotPassword.notifier)
+            .state
+            .eMailTextEditingController,
       ),
       SizedBox(height: sl<ScreenSize>().getHeightPercent(.03)),
       FilledLongButton(
-        onTap: () {},
+        onTap: ref.read(Providers.forgotPassword.notifier).state.sendCode,
         text: AppTexts.sendCode,
       ),
       SizedBox(height: sl<ScreenSize>().getHeightPercent(.4)),
-      const TextAndClickableText(
+      TextAndClickableText(
         text1: AppTexts.rememberPassword,
         text2: AppTexts.login,
+        onTap: () {
+          Navigator.of(context).pushNamed(AppRoutes.logInPage);
+        },
       ),
     ]);
   }
