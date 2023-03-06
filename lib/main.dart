@@ -14,9 +14,10 @@ class ChatAI extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: AppTexts.appName,
+      navigatorKey: GlobalContextKey.instance.globalKey,
       initialRoute: AppRoutes.base,
       onGenerateRoute: RouteGenerator.generateRoute,
     );

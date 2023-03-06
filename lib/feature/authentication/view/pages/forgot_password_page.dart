@@ -35,7 +35,9 @@ class ForgotPasswordPage extends ConsumerWidget {
       ),
       SizedBox(height: sl<ScreenSize>().getHeightPercent(.03)),
       FilledLongButton(
-        onTap: ref.read(Providers.forgotPassword.notifier).state.sendCode,
+        onTap: () {
+          ref.read(Providers.forgotPassword.notifier).state.sendCode();
+        },
         text: AppTexts.sendCode,
       ),
       SizedBox(height: sl<ScreenSize>().getHeightPercent(.4)),
