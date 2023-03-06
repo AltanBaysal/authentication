@@ -14,7 +14,7 @@ class AuthBackButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        throw UnimplementedError();
+        Navigator.of(context).pop();
       },
       child: Container(
         height: height ?? sl<ScreenSize>().getWidthPercent(.11),

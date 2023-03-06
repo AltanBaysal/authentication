@@ -5,31 +5,31 @@ class RouteGenerator {
     final args = settings.arguments; //for argumented pages
 
     switch (settings.name) {
-      case "/":
+      case AppRoutes.base:
         return MaterialPageRoute(
           builder: (_) => const LandingPage(),
         );
-      case "/LogIn":
+      case AppRoutes.logInPage:
         return MaterialPageRoute(
           builder: (_) => const LogInPage(),
         );
-      case "/SignIn":
+      case AppRoutes.signInPage:
         return MaterialPageRoute(
           builder: (_) => const SignInPage(),
         );
-      case "/ForgotPassword":
+      case AppRoutes.forgotPasswordPage:
         return MaterialPageRoute(
           builder: (_) => const ForgotPasswordPage(),
         );
-      case "/OTPVerification":
+      case AppRoutes.oTPVerificationPage:
         return MaterialPageRoute(
           builder: (_) => const OTPVerificationPage(),
         );
-      case "/CreateNewPassword":
+      case AppRoutes.createNewPasswordPage:
         return MaterialPageRoute(
           builder: (_) => const CreateNewPasswordPage(),
         );
-      case "/PasswordChanged":
+      case AppRoutes.passwordChangedPage:
         return MaterialPageRoute(
           builder: (_) => const PasswordChangedPage(),
         );

@@ -16,12 +16,20 @@ class LogInPage extends ConsumerWidget {
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.077)),
         CustomTextField(
           hintText: AppTexts.enterYourEmail,
+          controller: ref
+              .read(Providers.logIn.notifier)
+              .state
+              .eMailTextEditingController,
           height: sl<ScreenSize>().getHeightPercent(.072),
         ),
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.017)),
         LoginPasswordTextField(
           height: sl<ScreenSize>().getHeightPercent(.072),
           hintText: AppTexts.enterYourPassword,
+          controller: ref
+              .read(Providers.logIn.notifier)
+              .state
+              .passwordTextEditingController,
           obscureText: true,
         ),
         const Align(
@@ -38,7 +46,10 @@ class LogInPage extends ConsumerWidget {
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.025)),
         const LoginWithButtonsRow(),
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.1)),
-        const TextAndClickableText(
+        TextAndClickableText(
+          onTap: () {
+            Navigator.of(context).pushNamed(AppRoutes.signInPage);
+          },
           text1: AppTexts.dontHaveAnAccount,
           text2: AppTexts.registerNow,
         ),

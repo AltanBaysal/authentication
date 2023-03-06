@@ -17,7 +17,7 @@ class ChatAI extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: AppTexts.appName,
-      initialRoute: "/",
+      initialRoute: AppRoutes.base,
       onGenerateRoute: RouteGenerator.generateRoute,
     );
   }
@@ -30,14 +30,13 @@ class LandingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     sl<ScreenSize>().screenSize = MediaQuery.of(context);
     Future.delayed(const Duration(milliseconds: 2000), () {
-      Navigator.of(context).pushNamed("/LogIn");
+      Navigator.of(context).pushNamed(AppRoutes.logInPage);
     });
     return const Scaffold(
-      body: Center(child: Text("LandingPage")),
+      body: Center(child: Text("LandingPage")), //TODO
     );
   }
 }
-
 
 //riverpod +
 //auto login
