@@ -1,11 +1,10 @@
 import 'package:authentication/core/_core_exports.dart';
 
-class LogInPage extends StatelessWidget {
+class LogInPage extends ConsumerWidget {
   const LogInPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    sl<ScreenSize>().screenSize = MediaQuery.of(context);
+  Widget build(BuildContext context, WidgetRef ref) {
     return BaseAuthenticationPage(
       children: [
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.123)),
@@ -31,7 +30,7 @@ class LogInPage extends StatelessWidget {
         ),
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.077)),
         FilledLongButton(
-          onTap: () {},
+          onTap: ref.read(Providers.logIn.notifier).state.emailLogin,
           text: AppTexts.login,
         ),
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.035)),

@@ -1,8 +1,5 @@
 import 'package:authentication/core/_core_exports.dart';
 
-final forgotPasswordProvider =
-    StateProvider<ForgotPasswordProvider>((ref) => ForgotPasswordProvider());
-
 class ForgotPasswordProvider extends ChangeNotifier {
   TextEditingController eMailTextEditingController = TextEditingController();
 

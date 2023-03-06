@@ -6,7 +6,7 @@ Future<void> main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   await init();
-  runApp(const ChatAI());
+  runApp(const ProviderScope(child: ChatAI()));
 }
 
 class ChatAI extends StatelessWidget {
@@ -16,8 +16,9 @@ class ChatAI extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LandingPage(),
       title: AppTexts.appName,
+      initialRoute: "/",
+      onGenerateRoute: RouteGenerator.generateRoute,
     );
   }
 }
@@ -28,20 +29,28 @@ class LandingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     sl<ScreenSize>().screenSize = MediaQuery.of(context);
-    return const ForgotPasswordPage();
+    Future.delayed(const Duration(milliseconds: 2000), () {
+      Navigator.of(context).pushNamed("/LogIn");
+    });
+    return const Scaffold(
+      body: Center(child: Text("LandingPage")),
+    );
   }
 }
 
 
-//riverpod
+//riverpod +
 //auto login
-//fonts+
-//get it - dependency injection+
-//clean architecture+
-//flutter routes
+//fonts +
+//get it - dependency injection +
+//clean architecture +
+//flutter routes +
 //dio
 //functional programing
 //async programing
 //firebase
 //gmail facebook apple email auth
 //hive
+
+//TODO
+//error and landing page will added
