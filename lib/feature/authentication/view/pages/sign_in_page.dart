@@ -1,10 +1,10 @@
 import 'package:authentication/core/_core_exports.dart';
 
-class SignInPage extends StatelessWidget {
+class SignInPage extends ConsumerWidget {
   const SignInPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return BaseAuthenticationPage(
       children: [
         const Align(
@@ -24,25 +24,41 @@ class SignInPage extends StatelessWidget {
         CustomTextField(
           hintText: AppTexts.username,
           height: sl<ScreenSize>().getHeightPercent(.072),
+          controller: ref
+              .read(Providers.signInProvider.notifier)
+              .state
+              .userNameTextEditingController,
         ),
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.017)),
         CustomTextField(
           hintText: AppTexts.email,
           height: sl<ScreenSize>().getHeightPercent(.072),
+          controller: ref
+              .read(Providers.signInProvider.notifier)
+              .state
+              .eMailTextEditingController,
         ),
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.017)),
         CustomTextField(
           hintText: AppTexts.password,
           height: sl<ScreenSize>().getHeightPercent(.072),
+          controller: ref
+              .read(Providers.signInProvider.notifier)
+              .state
+              .passwordTextEditingController,
         ),
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.017)),
         CustomTextField(
           hintText: AppTexts.confirmpassword,
           height: sl<ScreenSize>().getHeightPercent(.072),
+          controller: ref
+              .read(Providers.signInProvider.notifier)
+              .state
+              .confirmPasswordTextEditingController,
         ),
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.02)),
         FilledLongButton(
-          onTap: () {},
+          onTap: ref.read(Providers.signInProvider.notifier).state.emailSignIn,
           text: AppTexts.agreeAndRegister,
         ),
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.035)),

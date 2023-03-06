@@ -10,7 +10,7 @@ class LoginWithButtonsRow extends ConsumerWidget {
       children: [
         Expanded(
           child: LoginWithButton(
-            onTap: ref.read(Providers.logIn.notifier).state.facebookLogin,
+            onTap: ref.read(Providers.logIn.notifier).state.facebookLogIn,
             icon: AppIconPaths.facebook,
             height: sl<ScreenSize>().getHeightPercent(.072),
             iconSize: sl<ScreenSize>().getHeightPercent(.03),
@@ -19,7 +19,7 @@ class LoginWithButtonsRow extends ConsumerWidget {
         const SizedBox(width: 8),
         Expanded(
           child: LoginWithButton(
-            onTap: ref.read(Providers.logIn.notifier).state.googleLogin,
+            onTap: ref.read(Providers.logIn.notifier).state.googleLogIn,
             icon: AppIconPaths.google,
             height: sl<ScreenSize>().getHeightPercent(.072),
             iconSize: sl<ScreenSize>().getHeightPercent(.03),
@@ -28,7 +28,7 @@ class LoginWithButtonsRow extends ConsumerWidget {
         const SizedBox(width: 8),
         Expanded(
           child: LoginWithButton(
-            onTap: ref.read(Providers.logIn.notifier).state.appleLogin,
+            onTap: ref.read(Providers.logIn.notifier).state.appleLogIn,
             icon: AppIconPaths.apple,
             height: sl<ScreenSize>().getHeightPercent(.072),
             iconSize: sl<ScreenSize>().getHeightPercent(.03),

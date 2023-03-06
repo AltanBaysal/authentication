@@ -9,11 +9,11 @@ class SignInProvider extends ChangeNotifier {
   TextEditingController confirmPasswordTextEditingController =
       TextEditingController();
 
-  void emailLogin() {}
+  void emailSignIn() {}
 
-  void facebookLogin() {}
+  void facebookLogIn() {}
 
-  void googleLogin() {}
+  void googleLogIn() {}
 
-  void appleLogin() {}
+  void appleLogIn() {}
 }

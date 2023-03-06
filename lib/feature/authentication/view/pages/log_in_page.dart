@@ -38,7 +38,7 @@ class LogInPage extends ConsumerWidget {
         ),
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.077)),
         FilledLongButton(
-          onTap: ref.read(Providers.logIn.notifier).state.emailLogin,
+          onTap: ref.read(Providers.logIn.notifier).state.emailLogIn,
           text: AppTexts.login,
         ),
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.035)),
