@@ -37,6 +37,7 @@ class ForgotPasswordPage extends ConsumerWidget {
       FilledLongButton(
         onTap: () {
           ref.read(Providers.forgotPassword.notifier).state.sendCode();
+          RouteManager.pushNamed(AppRoutes.oTPVerificationPage);
         },
         text: AppTexts.sendCode,
       ),

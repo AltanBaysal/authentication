@@ -28,7 +28,9 @@ class PasswordChangedPage extends StatelessWidget {
         ),
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.047)),
         FilledLongButton(
-          onTap: () {},
+          onTap: () {
+            RouteManager.pushNamed(AppRoutes.logInPage);
+          },
           text: AppTexts.backToLogin,
         ),
       ],

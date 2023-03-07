@@ -1,15 +1,19 @@
 import 'package:authentication/core/_core_exports.dart';
 
-class OTPVerificationNumberInputRow extends StatelessWidget {
+class OTPVerificationNumberInputRow extends ConsumerWidget {
   const OTPVerificationNumberInputRow({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Form(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           OTPVerificationNumberInput(
+            controller: ref
+                .read(Providers.forgotPassword.notifier)
+                .state
+                .oTP1TextEditingController,
             borderColor: AppColors.green,
             onChanged: (String value) {
               if (value.length == 1) {
@@ -19,6 +23,10 @@ class OTPVerificationNumberInputRow extends StatelessWidget {
             dimension: sl<ScreenSize>().getHeightPercent(.08),
           ),
           OTPVerificationNumberInput(
+            controller: ref
+                .read(Providers.forgotPassword.notifier)
+                .state
+                .oTP2TextEditingController,
             borderColor: AppColors.green,
             onChanged: (String value) {
               if (value.length == 1) {
@@ -28,6 +36,10 @@ class OTPVerificationNumberInputRow extends StatelessWidget {
             dimension: sl<ScreenSize>().getHeightPercent(.08),
           ),
           OTPVerificationNumberInput(
+            controller: ref
+                .read(Providers.forgotPassword.notifier)
+                .state
+                .oTP3TextEditingController,
             borderColor: AppColors.green,
             onChanged: (String value) {
               if (value.length == 1) {
@@ -37,6 +49,10 @@ class OTPVerificationNumberInputRow extends StatelessWidget {
             dimension: sl<ScreenSize>().getHeightPercent(.08),
           ),
           OTPVerificationNumberInput(
+            controller: ref
+                .read(Providers.forgotPassword.notifier)
+                .state
+                .oTP4TextEditingController,
             borderColor: AppColors.green,
             dimension: sl<ScreenSize>().getHeightPercent(.08),
           ),

@@ -5,12 +5,14 @@ class OTPVerificationNumberInput extends StatelessWidget {
     super.key,
     required this.dimension,
     required this.borderColor,
+    this.controller,
     this.onChanged,
   });
 
   final double dimension;
   final Color borderColor;
   final void Function(String)? onChanged;
+  final TextEditingController? controller;
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +26,7 @@ class OTPVerificationNumberInput extends StatelessWidget {
       ),
       child: TextField(
         onChanged: onChanged,
+        controller: controller,
         keyboardType: TextInputType.number,
         textAlign: TextAlign.center,
         style: AppTextStyles.title22BoldBlack,

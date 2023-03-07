@@ -1,10 +1,10 @@
 import 'package:authentication/core/_core_exports.dart';
 
-class OTPVerificationPage extends StatelessWidget {
+class OTPVerificationPage extends ConsumerWidget {
   const OTPVerificationPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return BaseAuthenticationPage(
       children: [
         const Align(
@@ -30,11 +30,14 @@ class OTPVerificationPage extends StatelessWidget {
         const OTPVerificationNumberInputRow(),
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.04)),
         FilledLongButton(
-          onTap: () {},
+          onTap: () {
+            ref.read(Providers.forgotPassword.notifier).state.verify();
+          },
           text: AppTexts.verify,
         ),
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.4)),
-        const TextAndClickableText(
+        TextAndClickableText(
+          onTap: ref.read(Providers.forgotPassword.notifier).state.sendCode,
           text1: AppTexts.didntReceivedCode,
           text2: AppTexts.resend,
         ),

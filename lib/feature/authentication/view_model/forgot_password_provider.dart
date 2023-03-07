@@ -8,9 +8,9 @@ class ForgotPasswordProvider extends ChangeNotifier {
   TextEditingController oTP3TextEditingController = TextEditingController();
   TextEditingController oTP4TextEditingController = TextEditingController();
 
-  void sendCode() {
-    RouteManager.pushNamed(AppRoutes.oTPVerificationPage);
-  }
+  void sendCode() {}
 
-  void verify() {}
+  void verify() {
+    RouteManager.pushNamed(AppRoutes.passwordChangedPage);
+  }
 }
