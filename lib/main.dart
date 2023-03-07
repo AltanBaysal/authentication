@@ -31,7 +31,7 @@ class LandingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     sl<ScreenSize>().screenSize = MediaQuery.of(context);
     Future.delayed(const Duration(milliseconds: 2000), () {
-      Navigator.of(context).pushNamed(AppRoutes.logInPage);
+      RouteManager.pushNamed(AppRoutes.logInPage);
     });
     return const Scaffold(
       body: Center(child: Text("LandingPage")), //TODO
@@ -51,6 +51,9 @@ class LandingPage extends StatelessWidget {
 //firebase
 //gmail facebook apple email auth
 //hive
+//open close +
+//SOLİD princible+
 
 //TODO
 //error and landing page will added
+//route problem and screensize util problem should be solved

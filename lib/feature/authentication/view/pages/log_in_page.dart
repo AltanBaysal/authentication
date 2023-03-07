@@ -48,7 +48,7 @@ class LogInPage extends ConsumerWidget {
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.1)),
         TextAndClickableText(
           onTap: () {
-            Navigator.of(context).pushNamed(AppRoutes.signInPage);
+            RouteManager.pushNamed(AppRoutes.signInPage);
           },
           text1: AppTexts.dontHaveAnAccount,
           text2: AppTexts.registerNow,

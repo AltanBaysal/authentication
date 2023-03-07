@@ -45,7 +45,7 @@ class ForgotPasswordPage extends ConsumerWidget {
         text1: AppTexts.rememberPassword,
         text2: AppTexts.login,
         onTap: () {
-          Navigator.of(context).pushNamed(AppRoutes.logInPage);
+          RouteManager.pushNamed(AppRoutes.logInPage);
         },
       ),
     ]);
