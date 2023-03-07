@@ -4,11 +4,23 @@ class LogInProvider extends ChangeNotifier {
   TextEditingController eMailTextEditingController = TextEditingController();
   TextEditingController passwordTextEditingController = TextEditingController();
 
-  void emailLogIn() {}
+  void emailLogIn() {
+    login();
+  }
 
-  void facebookLogIn() {}
+  void facebookLogIn() {
+    login();
+  }
 
-  void googleLogIn() {}
+  void googleLogIn() {
+    login();
+  }
 
-  void appleLogIn() {}
+  void appleLogIn() {
+    login();
+  }
+
+  void login() {
+    RouteManager.pushNamed(AppRoutes.homePage);
+  }
 }

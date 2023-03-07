@@ -1,7 +1,7 @@
 import 'package:authentication/core/_core_exports.dart';
 
 class PasswordChangedPage extends StatelessWidget {
-  const PasswordChangedPage({super.key});
+  const PasswordChangedPage({super.key, al});
 
   @override
   Widget build(BuildContext context) {

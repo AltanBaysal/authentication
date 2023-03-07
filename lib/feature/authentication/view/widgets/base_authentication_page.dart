@@ -1,7 +1,10 @@
 import 'package:authentication/core/_core_exports.dart';
 
 class BaseAuthenticationPage extends StatelessWidget {
-  const BaseAuthenticationPage({super.key, required this.children});
+  const BaseAuthenticationPage({
+    super.key,
+    required this.children,
+  });
 
   final List<Widget> children;
   @override
@@ -15,7 +18,11 @@ class BaseAuthenticationPage extends StatelessWidget {
             25,
             sl<ScreenSize>().getHeightPercent(.02),
           ),
-          child: Column(children: children),
+          child: Center(
+            child: Column(
+              children: children,
+            ),
+          ),
         ),
       ),
     );

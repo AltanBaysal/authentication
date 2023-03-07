@@ -1,4 +1,5 @@
 import 'package:authentication/core/_core_exports.dart';
+import 'package:authentication/feature/authentication/view/pages/home_page.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -32,6 +33,10 @@ class RouteGenerator {
       case AppRoutes.passwordChangedPage:
         return MaterialPageRoute(
           builder: (_) => const PasswordChangedPage(),
+        );
+      case AppRoutes.homePage:
+        return MaterialPageRoute(
+          builder: (_) => const HomePage(),
         );
       default:
         return _errorRoute();

@@ -23,6 +23,8 @@ class AppTexts {
   static const String enterYourEmail = "Enter your email";
   static const String enterYourPassword = "Enter your password";
   static const String orLoginWith = "Or Login with";
+  static const String youSuccessfullyLogin = "You successfully login";
+
   //
   static const String welcomebackGladToSeeYouAgain =
       "Welcome back! Glad to see you, Again!";
