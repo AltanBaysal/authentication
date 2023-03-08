@@ -35,4 +35,8 @@ Future<void> initCore() async {
   sl.registerLazySingleton<ScreenSize>(() => ScreenSize());
 }
 
-Future<void> initExternal() async {}
+Future<void> initExternal() async {
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+}

@@ -6,12 +6,14 @@ class LoginPasswordTextField extends StatelessWidget {
     required this.hintText,
     this.obscureText = true,
     this.onChanged,
+    this.onTap,
     this.controller,
     this.height,
   });
 
   final String hintText;
   final Function(String)? onChanged;
+  final void Function()? onTap;
   final TextEditingController? controller;
   final bool obscureText;
   final double? height;
@@ -25,7 +27,7 @@ class LoginPasswordTextField extends StatelessWidget {
       controller: controller,
       obscureText: obscureText,
       suffix: GestureDetector(
-        onTap: () {},
+        onTap: onTap,
         child: Padding(
           padding: const EdgeInsets.all(8),
           child: AppSvgPicture(

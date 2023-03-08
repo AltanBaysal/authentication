@@ -12,7 +12,6 @@ class OTPVerificationNumberInputRow extends ConsumerWidget {
           OTPVerificationNumberInput(
             controller: ref
                 .read(Providers.forgotPassword.notifier)
-                .state
                 .oTP1TextEditingController,
             borderColor: AppColors.green,
             onChanged: (String value) {
@@ -25,7 +24,6 @@ class OTPVerificationNumberInputRow extends ConsumerWidget {
           OTPVerificationNumberInput(
             controller: ref
                 .read(Providers.forgotPassword.notifier)
-                .state
                 .oTP2TextEditingController,
             borderColor: AppColors.green,
             onChanged: (String value) {
@@ -38,7 +36,6 @@ class OTPVerificationNumberInputRow extends ConsumerWidget {
           OTPVerificationNumberInput(
             controller: ref
                 .read(Providers.forgotPassword.notifier)
-                .state
                 .oTP3TextEditingController,
             borderColor: AppColors.green,
             onChanged: (String value) {
@@ -51,7 +48,6 @@ class OTPVerificationNumberInputRow extends ConsumerWidget {
           OTPVerificationNumberInput(
             controller: ref
                 .read(Providers.forgotPassword.notifier)
-                .state
                 .oTP4TextEditingController,
             borderColor: AppColors.green,
             dimension: sl<ScreenSize>().getHeightPercent(.08),

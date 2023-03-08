@@ -4,6 +4,14 @@ class LogInProvider extends ChangeNotifier {
   TextEditingController eMailTextEditingController = TextEditingController();
   TextEditingController passwordTextEditingController = TextEditingController();
 
+  bool isPasswordObscured = false;
+
+  void isPasswordObscuredToggle() {
+    isPasswordObscured = !isPasswordObscured;
+    print(isPasswordObscured);
+    notifyListeners();
+  }
+
   void emailLogIn() {
     login();
   }

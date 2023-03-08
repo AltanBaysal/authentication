@@ -30,13 +30,12 @@ class ForgotPasswordPage extends ConsumerWidget {
         height: sl<ScreenSize>().getHeightPercent(.072),
         controller: ref
             .read(Providers.forgotPassword.notifier)
-            .state
             .eMailTextEditingController,
       ),
       SizedBox(height: sl<ScreenSize>().getHeightPercent(.03)),
       FilledLongButton(
         onTap: () {
-          ref.read(Providers.forgotPassword.notifier).state.sendCode();
+          ref.read(Providers.forgotPassword.notifier).sendCode();
           RouteManager.pushNamed(AppRoutes.oTPVerificationPage);
         },
         text: AppTexts.sendCode,

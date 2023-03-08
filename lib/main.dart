@@ -2,9 +2,6 @@ import 'package:authentication/core/_core_exports.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
   await init();
   runApp(const ProviderScope(child: ChatAI()));
 }
@@ -40,19 +37,21 @@ class LandingPage extends StatelessWidget {
 }
 
 //riverpod +
-//auto login
 //fonts +
 //get it - dependency injection +
 //clean architecture +
 //flutter routes +
+//firebase +
+//open close +
+//SOLİD princible+
+//flutterfire cli +
+//flutter focus
+//gmail facebook apple email auth
+//hive
 //dio
 //functional programing
 //async programing
-//firebase
-//gmail facebook apple email auth
-//hive
-//open close +
-//SOLİD princible+
+//auto login
 
 //TODO
 //error and landing page will added

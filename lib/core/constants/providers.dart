@@ -1,16 +1,17 @@
 import 'package:authentication/core/_core_exports.dart';
 
 class Providers {
-  static final createNewPassword = StateProvider<CreateNewPasswordProvider>(
+  static final createNewPassword =
+      ChangeNotifierProvider<CreateNewPasswordProvider>(
     (ref) => CreateNewPasswordProvider(),
   );
-  static final forgotPassword = StateProvider<ForgotPasswordProvider>(
+  static final forgotPassword = ChangeNotifierProvider<ForgotPasswordProvider>(
     (ref) => ForgotPasswordProvider(),
   );
-  static final logIn = StateProvider<LogInProvider>(
+  static final logIn = ChangeNotifierProvider<LogInProvider>(
     (ref) => LogInProvider(),
   );
-  static final signInProvider = StateProvider<SignInProvider>(
+  static final signInProvider = ChangeNotifierProvider<SignInProvider>(
     (ref) => SignInProvider(),
   );
 }

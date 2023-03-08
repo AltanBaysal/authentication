@@ -16,21 +16,19 @@ class LogInPage extends ConsumerWidget {
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.077)),
         CustomTextField(
           hintText: AppTexts.enterYourEmail,
-          controller: ref
-              .read(Providers.logIn.notifier)
-              .state
-              .eMailTextEditingController,
+          controller:
+              ref.read(Providers.logIn.notifier).eMailTextEditingController,
           height: sl<ScreenSize>().getHeightPercent(.072),
+          obscureText: false,
         ),
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.017)),
         LoginPasswordTextField(
           height: sl<ScreenSize>().getHeightPercent(.072),
           hintText: AppTexts.enterYourPassword,
-          controller: ref
-              .read(Providers.logIn.notifier)
-              .state
-              .passwordTextEditingController,
-          obscureText: true,
+          controller:
+              ref.read(Providers.logIn.notifier).passwordTextEditingController,
+          obscureText: ref.watch(Providers.logIn).isPasswordObscured,
+          onTap: ref.read(Providers.logIn.notifier).isPasswordObscuredToggle,
         ),
         const Align(
           alignment: Alignment.centerRight,
@@ -38,7 +36,7 @@ class LogInPage extends ConsumerWidget {
         ),
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.077)),
         FilledLongButton(
-          onTap: ref.read(Providers.logIn.notifier).state.emailLogIn,
+          onTap: ref.read(Providers.logIn.notifier).emailLogIn,
           text: AppTexts.login,
         ),
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.035)),

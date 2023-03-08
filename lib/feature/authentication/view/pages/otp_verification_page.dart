@@ -31,13 +31,13 @@ class OTPVerificationPage extends ConsumerWidget {
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.04)),
         FilledLongButton(
           onTap: () {
-            ref.read(Providers.forgotPassword.notifier).state.verify();
+            ref.read(Providers.forgotPassword.notifier).verify();
           },
           text: AppTexts.verify,
         ),
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.4)),
         TextAndClickableText(
-          onTap: ref.read(Providers.forgotPassword.notifier).state.sendCode,
+          onTap: ref.read(Providers.forgotPassword.notifier).sendCode,
           text1: AppTexts.didntReceivedCode,
           text2: AppTexts.resend,
         ),

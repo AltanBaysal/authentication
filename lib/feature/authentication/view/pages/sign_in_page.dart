@@ -26,7 +26,6 @@ class SignInPage extends ConsumerWidget {
           height: sl<ScreenSize>().getHeightPercent(.072),
           controller: ref
               .read(Providers.signInProvider.notifier)
-              .state
               .userNameTextEditingController,
         ),
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.017)),
@@ -35,7 +34,6 @@ class SignInPage extends ConsumerWidget {
           height: sl<ScreenSize>().getHeightPercent(.072),
           controller: ref
               .read(Providers.signInProvider.notifier)
-              .state
               .eMailTextEditingController,
         ),
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.017)),
@@ -44,7 +42,6 @@ class SignInPage extends ConsumerWidget {
           height: sl<ScreenSize>().getHeightPercent(.072),
           controller: ref
               .read(Providers.signInProvider.notifier)
-              .state
               .passwordTextEditingController,
         ),
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.017)),
@@ -53,12 +50,11 @@ class SignInPage extends ConsumerWidget {
           height: sl<ScreenSize>().getHeightPercent(.072),
           controller: ref
               .read(Providers.signInProvider.notifier)
-              .state
               .confirmPasswordTextEditingController,
         ),
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.02)),
         FilledLongButton(
-          onTap: ref.read(Providers.signInProvider.notifier).state.emailSignIn,
+          onTap: ref.read(Providers.signInProvider.notifier).emailSignIn,
           text: AppTexts.agreeAndRegister,
         ),
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.035)),
