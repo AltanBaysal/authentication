@@ -7,4 +7,5 @@ class AppRoutes {
   static const String createNewPasswordPage = "/CreateNewPassword";
   static const String passwordChangedPage = "/PasswordChanged";
   static const String homePage = "/HomePage";
+  static const String errorPage = "/ErrorPage";
 }

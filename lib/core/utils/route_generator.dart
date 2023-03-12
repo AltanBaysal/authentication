@@ -1,10 +1,11 @@
 import 'package:authentication/core/_core_exports.dart';
+import 'package:authentication/core/shared_widgets/error_page.dart';
 import 'package:authentication/feature/authentication/view/pages/home_page.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     final args = settings.arguments; //for argumented pages
-
+    print(settings.name);
     switch (settings.name) {
       case AppRoutes.base:
         return MaterialPageRoute(
@@ -38,6 +39,10 @@ class RouteGenerator {
         return MaterialPageRoute(
           builder: (_) => const HomePage(),
         );
+      case AppRoutes.errorPage:
+        return MaterialPageRoute(
+          builder: (_) => const ErrorPage(),
+        );
       default:
         return _errorRoute();
     }
@@ -45,7 +50,7 @@ class RouteGenerator {
 
   static Route<dynamic> _errorRoute() {
     return MaterialPageRoute(builder: (_) {
-      throw UnimplementedError(); //TODO error page eklenicek
+      return const ErrorPage();
     });
   }
 }

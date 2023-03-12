@@ -15,7 +15,7 @@ class ChatAI extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: AppTexts.appName,
       navigatorKey: GlobalContextKey.instance.globalKey,
-      initialRoute: AppRoutes.base,
+      initialRoute: AppRoutes.errorPage,
       onGenerateRoute: RouteGenerator.generateRoute,
     );
   }
@@ -28,7 +28,7 @@ class LandingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     sl<ScreenSize>().screenSize = MediaQuery.of(context);
     Future.delayed(const Duration(milliseconds: 2000), () {
-      RouteManager.pushNamed(AppRoutes.logInPage);
+      RouteManager.pushNamed(AppRoutes.errorPage);
     });
     return const Scaffold(
       body: Center(child: Text("LandingPage")), //TODO
@@ -46,7 +46,7 @@ class LandingPage extends StatelessWidget {
 //SOLİD princible+
 //flutterfire cli +
 //Regexp +
-//flutter focus
+//native splash screen
 //gmail facebook apple email auth
 //hive
 //dio
