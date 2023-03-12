@@ -15,6 +15,7 @@ class LogInPage extends ConsumerWidget {
         ),
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.077)),
         CustomTextField(
+          validator: ValidatorUtil.emailValidator,
           hintText: AppTexts.enterYourEmail,
           controller:
               ref.read(Providers.logIn.notifier).eMailTextEditingController,
@@ -22,7 +23,8 @@ class LogInPage extends ConsumerWidget {
           obscureText: false,
         ),
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.017)),
-        LoginPasswordTextField(
+        CustomPasswordTextField(
+          validator: ValidatorUtil.passwordValidator,
           height: sl<ScreenSize>().getHeightPercent(.072),
           hintText: AppTexts.enterYourPassword,
           controller:

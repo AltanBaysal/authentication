@@ -9,9 +9,11 @@ class CustomTextField extends StatelessWidget {
     this.onChanged,
     this.controller,
     this.suffix,
+    this.validator,
   });
 
   final String hintText;
+  final String? Function(String?)? validator;
   final Function(String)? onChanged;
   final TextEditingController? controller;
   final bool obscureText;
@@ -33,15 +35,19 @@ class CustomTextField extends StatelessWidget {
       child: Row(
         children: [
           Expanded(
-            child: TextField(
-              cursorColor: Colors.black,
-              obscureText: obscureText,
-              onChanged: onChanged,
-              controller: controller,
-              decoration: InputDecoration(
-                hintStyle: AppTextStyles.body15MediumLightBlue,
-                hintText: hintText,
-                border: InputBorder.none,
+            child: Form(
+              autovalidateMode: AutovalidateMode.onUserInteraction,
+              child: TextFormField(
+                validator: validator,
+                cursorColor: Colors.black,
+                obscureText: obscureText,
+                onChanged: onChanged,
+                controller: controller,
+                decoration: InputDecoration(
+                  hintStyle: AppTextStyles.body15MediumLightBlue,
+                  hintText: hintText,
+                  border: InputBorder.none,
+                ),
               ),
             ),
           ),

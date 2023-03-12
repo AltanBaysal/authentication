@@ -37,7 +37,8 @@ class SignInPage extends ConsumerWidget {
               .eMailTextEditingController,
         ),
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.017)),
-        CustomTextField(
+        CustomPasswordTextField(
+          validator: ValidatorUtil.passwordValidator,
           hintText: AppTexts.password,
           height: sl<ScreenSize>().getHeightPercent(.072),
           controller: ref
@@ -45,7 +46,8 @@ class SignInPage extends ConsumerWidget {
               .passwordTextEditingController,
         ),
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.017)),
-        CustomTextField(
+        CustomPasswordTextField(
+          validator: ValidatorUtil.passwordValidator,
           hintText: AppTexts.confirmpassword,
           height: sl<ScreenSize>().getHeightPercent(.072),
           controller: ref

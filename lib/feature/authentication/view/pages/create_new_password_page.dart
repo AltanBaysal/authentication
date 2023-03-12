@@ -26,12 +26,14 @@ class CreateNewPasswordPage extends StatelessWidget {
           style: AppTextStyles.body16MediumLightBlue,
         ),
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.077)),
-        CustomTextField(
+        CustomPasswordTextField(
+          validator: ValidatorUtil.passwordValidator,
           hintText: AppTexts.newPassword,
           height: sl<ScreenSize>().getHeightPercent(.072),
         ),
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.02)),
-        CustomTextField(
+        CustomPasswordTextField(
+          validator: ValidatorUtil.passwordValidator,
           hintText: AppTexts.confirmpassword,
           height: sl<ScreenSize>().getHeightPercent(.072),
         ),

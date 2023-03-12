@@ -1,9 +1,10 @@
 import 'package:authentication/core/_core_exports.dart';
 
-class LoginPasswordTextField extends StatelessWidget {
-  const LoginPasswordTextField({
+class CustomPasswordTextField extends StatelessWidget {
+  const CustomPasswordTextField({
     super.key,
     required this.hintText,
+    this.validator,
     this.obscureText = true,
     this.onChanged,
     this.onTap,
@@ -15,6 +16,7 @@ class LoginPasswordTextField extends StatelessWidget {
   final Function(String)? onChanged;
   final void Function()? onTap;
   final TextEditingController? controller;
+  final String? Function(String?)? validator;
   final bool obscureText;
   final double? height;
 
@@ -26,6 +28,7 @@ class LoginPasswordTextField extends StatelessWidget {
       hintText: hintText,
       controller: controller,
       obscureText: obscureText,
+      validator: validator,
       suffix: GestureDetector(
         onTap: onTap,
         child: Padding(
