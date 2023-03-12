@@ -5,7 +5,7 @@ class CustomPasswordTextField extends StatelessWidget {
     super.key,
     required this.hintText,
     this.validator,
-    this.obscureText = true,
+    this.textObscure = true,
     this.onChanged,
     this.onTap,
     this.controller,
@@ -17,7 +17,7 @@ class CustomPasswordTextField extends StatelessWidget {
   final void Function()? onTap;
   final TextEditingController? controller;
   final String? Function(String?)? validator;
-  final bool obscureText;
+  final bool textObscure;
   final double? height;
 
   @override
@@ -27,7 +27,7 @@ class CustomPasswordTextField extends StatelessWidget {
       onChanged: onChanged,
       hintText: hintText,
       controller: controller,
-      obscureText: obscureText,
+      obscureText: textObscure,
       validator: validator,
       suffix: GestureDetector(
         onTap: onTap,
@@ -35,7 +35,7 @@ class CustomPasswordTextField extends StatelessWidget {
           padding: const EdgeInsets.all(8),
           child: AppSvgPicture(
             color: Colors.grey,
-            svg: obscureText ? AppIconPaths.closedEye : AppIconPaths.openedEye,
+            svg: textObscure ? AppIconPaths.closedEye : AppIconPaths.openedEye,
           ),
         ),
       ),

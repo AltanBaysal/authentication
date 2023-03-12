@@ -29,8 +29,8 @@ class LogInPage extends ConsumerWidget {
           hintText: AppTexts.enterYourPassword,
           controller:
               ref.read(Providers.logIn.notifier).passwordTextEditingController,
-          obscureText: ref.watch(Providers.logIn).isPasswordObscured,
-          onTap: ref.read(Providers.logIn.notifier).isPasswordObscuredToggle,
+          textObscure: ref.watch(Providers.logIn).isPasswordObscured,
+          onTap: ref.read(Providers.logIn.notifier).passwordObscuredToggle,
         ),
         const Align(
           alignment: Alignment.centerRight,

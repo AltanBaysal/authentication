@@ -12,7 +12,7 @@ class Providers {
   static final logIn = ChangeNotifierProvider<LogInProvider>(
     (ref) => LogInProvider(),
   );
-  static final signInProvider = ChangeNotifierProvider<SignInProvider>(
+  static final signIn = ChangeNotifierProvider<SignInProvider>(
     (ref) => SignInProvider(),
   );
   static final authentication = ChangeNotifierProvider<AuthenticationProvider>(

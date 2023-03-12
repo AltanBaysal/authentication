@@ -11,6 +11,6 @@ class ForgotPasswordProvider extends ChangeNotifier {
   void sendCode() {}
 
   void verify() {
-    RouteManager.pushNamed(AppRoutes.passwordChangedPage);
+    RouteManager.pushNamed(AppRoutes.createNewPasswordPage);
   }
 }

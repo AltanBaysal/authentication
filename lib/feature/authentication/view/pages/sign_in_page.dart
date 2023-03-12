@@ -24,39 +24,41 @@ class SignInPage extends ConsumerWidget {
         CustomTextField(
           hintText: AppTexts.username,
           height: sl<ScreenSize>().getHeightPercent(.072),
-          controller: ref
-              .read(Providers.signInProvider.notifier)
-              .userNameTextEditingController,
+          controller:
+              ref.read(Providers.signIn.notifier).userNameTextEditingController,
         ),
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.017)),
         CustomTextField(
           hintText: AppTexts.email,
           height: sl<ScreenSize>().getHeightPercent(.072),
-          controller: ref
-              .read(Providers.signInProvider.notifier)
-              .eMailTextEditingController,
+          controller:
+              ref.read(Providers.signIn.notifier).eMailTextEditingController,
         ),
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.017)),
         CustomPasswordTextField(
           validator: ValidatorUtil.passwordValidator,
+          onTap: ref.read(Providers.signIn.notifier).passwordObscuredToggle,
+          textObscure: ref.watch(Providers.signIn).isPasswordObscured,
           hintText: AppTexts.password,
           height: sl<ScreenSize>().getHeightPercent(.072),
-          controller: ref
-              .read(Providers.signInProvider.notifier)
-              .passwordTextEditingController,
+          controller:
+              ref.read(Providers.signIn.notifier).passwordTextEditingController,
         ),
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.017)),
         CustomPasswordTextField(
           validator: ValidatorUtil.passwordValidator,
+          onTap:
+              ref.read(Providers.signIn.notifier).confirmPasswordObscuredToggle,
+          textObscure: ref.watch(Providers.signIn).isConfirmPasswordObscured,
           hintText: AppTexts.confirmpassword,
           height: sl<ScreenSize>().getHeightPercent(.072),
           controller: ref
-              .read(Providers.signInProvider.notifier)
+              .read(Providers.signIn.notifier)
               .confirmPasswordTextEditingController,
         ),
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.02)),
         FilledLongButton(
-          onTap: ref.read(Providers.signInProvider.notifier).emailSignIn,
+          onTap: ref.read(Providers.signIn.notifier).emailSignIn,
           text: AppTexts.agreeAndRegister,
         ),
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.035)),

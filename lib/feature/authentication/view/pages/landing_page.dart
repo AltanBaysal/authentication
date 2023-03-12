@@ -20,10 +20,7 @@ class LandingPage extends StatelessWidget {
               height: sl<ScreenSize>().getWidthPercent(.27),
             ),
             SizedBox(height: sl<ScreenSize>().getHeightPercent(.037)),
-            SizedBox(
-              height: sl<ScreenSize>().getHeightPercent(.03),
-              child: const CircularProgressIndicator.adaptive(),
-            ),
+            const CircularProgressIndicator.adaptive(),
           ],
         ),
       ),

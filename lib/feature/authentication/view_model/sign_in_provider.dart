@@ -7,6 +7,19 @@ class SignInProvider extends ChangeNotifier {
   TextEditingController confirmPasswordTextEditingController =
       TextEditingController();
 
+  bool isPasswordObscured = false;
+  bool isConfirmPasswordObscured = false;
+
+  void passwordObscuredToggle() {
+    isPasswordObscured = !isPasswordObscured;
+    notifyListeners();
+  }
+
+  void confirmPasswordObscuredToggle() {
+    isConfirmPasswordObscured = !isConfirmPasswordObscured;
+    notifyListeners();
+  }
+
   void emailSignIn() {}
 
   void facebookLogIn() {}

@@ -1,10 +1,10 @@
 import 'package:authentication/core/_core_exports.dart';
 
-class CreateNewPasswordPage extends StatelessWidget {
+class CreateNewPasswordPage extends ConsumerWidget {
   const CreateNewPasswordPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return BaseAuthenticationPage(
       children: [
         const Align(
@@ -28,18 +28,34 @@ class CreateNewPasswordPage extends StatelessWidget {
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.077)),
         CustomPasswordTextField(
           validator: ValidatorUtil.passwordValidator,
+          onTap: ref
+              .read(Providers.createNewPassword.notifier)
+              .newPasswordObscuredToggle,
+          textObscure:
+              ref.watch(Providers.createNewPassword).isNewPasswordObscured,
+          controller: ref
+              .read(Providers.createNewPassword.notifier)
+              .newPasswordTextEditingController,
           hintText: AppTexts.newPassword,
           height: sl<ScreenSize>().getHeightPercent(.072),
         ),
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.02)),
         CustomPasswordTextField(
           validator: ValidatorUtil.passwordValidator,
+          onTap: ref
+              .read(Providers.createNewPassword.notifier)
+              .confirmPasswordObscuredToggle,
+          textObscure:
+              ref.watch(Providers.createNewPassword).isConfirmPasswordObscured,
+          controller: ref
+              .read(Providers.createNewPassword.notifier)
+              .confirmNewPasswordTextEditingController,
           hintText: AppTexts.confirmpassword,
           height: sl<ScreenSize>().getHeightPercent(.072),
         ),
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.04)),
         FilledLongButton(
-          onTap: () {},
+          onTap: ref.read(Providers.createNewPassword.notifier).resetPassword,
           text: AppTexts.resetPassword,
         ),
       ],
