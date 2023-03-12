@@ -34,7 +34,7 @@ class ChatAI extends StatelessWidget {
 //SOLİD princible+
 //flutterfire cli +
 //Regexp +
-//AppIcon
+//launcher icon
 //native splash screen
 //gmail facebook apple email auth
 //hive
