@@ -8,7 +8,6 @@ class LogInProvider extends ChangeNotifier {
 
   void isPasswordObscuredToggle() {
     isPasswordObscured = !isPasswordObscured;
-    print(isPasswordObscured);
     notifyListeners();
   }
 

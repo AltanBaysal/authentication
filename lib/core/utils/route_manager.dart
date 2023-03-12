@@ -5,9 +5,11 @@ class RouteManager {
     String path, {
     Object? arguments,
   }) {
-    ScaffoldMessenger.of(
-      GlobalContextKey.instance.globalKey.currentContext!,
-    ).clearSnackBars();
+    if (GlobalContextKey.instance.globalKey.currentState == null) {
+      ScaffoldMessenger.of(
+        GlobalContextKey.instance.globalKey.currentContext!,
+      ).clearSnackBars();
+    }
     return GlobalContextKey.instance.globalKey.currentState
         ?.pushNamed(path, arguments: arguments);
   }

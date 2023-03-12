@@ -3,3 +3,4 @@ export 'theme/_theme_exports.dart';
 export 'app_route.dart';
 export 'app_texts.dart';
 export 'providers.dart';
+export 'app_regexps.dart';

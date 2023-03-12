@@ -45,6 +45,7 @@ class LandingPage extends StatelessWidget {
 //open close +
 //SOLİD princible+
 //flutterfire cli +
+//Regexp +
 //flutter focus
 //gmail facebook apple email auth
 //hive
