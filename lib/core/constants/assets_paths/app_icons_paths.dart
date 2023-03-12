@@ -4,9 +4,10 @@ class AppIconPaths {
   static const String openedEye = "assets/images/opened_eye.svg";
   static const String closedEye = "assets/images/closed_eye.svg";
   static const String nice = "assets/images/nice.svg";
+  static const String cross = "assets/images/cross.svg";
 
   static const String apple = "assets/images/apple_logo.svg";
   static const String facebook = "assets/images/facebook_logo.svg";
   static const String google = "assets/images/google_logo.svg";
-  static const String cross = "assets/images/cross.svg";
+  static const String appLogoSvg = "assets/images/watermelons.svg";
 }

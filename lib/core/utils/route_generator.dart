@@ -4,7 +4,6 @@ import 'package:authentication/feature/authentication/view/pages/home_page.dart'
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
-    final args = settings.arguments; //for argumented pages
     print(settings.name);
     switch (settings.name) {
       case AppRoutes.base:

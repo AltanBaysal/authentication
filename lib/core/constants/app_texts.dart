@@ -1,5 +1,5 @@
 class AppTexts {
-  static const String appName = "Chat AI";
+  static const String appName = "Melon";
 
   static const String login = "Login";
   static const String resend = "Resend";
