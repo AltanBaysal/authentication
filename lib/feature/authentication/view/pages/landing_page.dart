@@ -14,12 +14,16 @@ class LandingPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            SizedBox(height: sl<ScreenSize>().getHeightPercent(.041)),
             AppSvgPicture(
               svg: AppIconPaths.appLogoSvg,
               height: sl<ScreenSize>().getWidthPercent(.27),
             ),
             SizedBox(height: sl<ScreenSize>().getHeightPercent(.037)),
-            const CircularProgressIndicator.adaptive(),
+            SizedBox(
+              height: sl<ScreenSize>().getHeightPercent(.03),
+              child: const CircularProgressIndicator.adaptive(),
+            ),
           ],
         ),
       ),
