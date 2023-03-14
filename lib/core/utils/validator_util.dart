@@ -25,6 +25,7 @@ class ValidatorUtil {
     required String regExp,
     required String value,
   }) {
+    print(value);
     RegExp regExp = RegExp(AppRegExps.password);
     return regExp.hasMatch(value);
   }

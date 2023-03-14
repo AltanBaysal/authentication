@@ -15,8 +15,6 @@ class ForgotPasswordProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void sendCode() {}
-
   bool isVerifyButtonTriggered = false;
   void setIsVerifyButtonTriggeredTrue() {
     isVerifyButtonTriggered = true;
@@ -28,13 +26,19 @@ class ForgotPasswordProvider extends ChangeNotifier {
   }
 
   bool get isOTPEmpty {
-    return (oTP1TextEditingController.text.isEmpty ||
+    return oTP1TextEditingController.text.isEmpty ||
         oTP2TextEditingController.text.isEmpty ||
         oTP3TextEditingController.text.isEmpty ||
-        oTP4TextEditingController.text.isEmpty);
+        oTP4TextEditingController.text.isEmpty;
+  }
+
+  void sendCode() {
+    if (!isEmailValid) return;
+    RouteManager.pushNamed(AppRoutes.oTPVerificationPage);
   }
 
   void verify() {
+    if (isOTPEmpty) return;
     RouteManager.pushNamed(AppRoutes.createNewPasswordPage);
   }
 }

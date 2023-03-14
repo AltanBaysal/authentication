@@ -33,12 +33,18 @@ class ForgotPasswordPage extends ConsumerWidget {
         controller: forgotPasswordProvider.eMailTextEditingController,
         obscureText: false,
       ),
+      if (forgotPasswordProvider.isSendCodeButtonTriggered) ...[
+        EmailInputAreaError(
+          isError: !forgotPasswordProvider.isEmailValid,
+          isEmpty:
+              forgotPasswordProvider.eMailTextEditingController.text.isEmpty,
+        ),
+      ],
       SizedBox(height: sl<ScreenSize>().getHeightPercent(.03)),
       FilledLongButton(
         onTap: () {
           forgotPasswordProvider.setIsSendCodeButtonTriggeredTrue();
           forgotPasswordProvider.sendCode();
-          RouteManager.pushNamed(AppRoutes.oTPVerificationPage);
         },
         text: AppTexts.sendCode,
       ),

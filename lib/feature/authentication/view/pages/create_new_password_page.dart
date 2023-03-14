@@ -37,6 +37,13 @@ class CreateNewPasswordPage extends ConsumerWidget {
           hintText: AppTexts.newPassword,
           height: sl<ScreenSize>().getHeightPercent(.072),
         ),
+        if (createNewPasswordProvider.isResetPasswordButtonTriggered) ...[
+          PasswordInputAreaError(
+            isError: !createNewPasswordProvider.isNewPasswordValid,
+            isEmpty: createNewPasswordProvider
+                .newPasswordTextEditingController.text.isEmpty,
+          ),
+        ],
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.02)),
         CustomPasswordTextField(
           onTap: createNewPasswordProvider.confirmPasswordObscuredToggle,
@@ -47,6 +54,13 @@ class CreateNewPasswordPage extends ConsumerWidget {
           hintText: AppTexts.confirmpassword,
           height: sl<ScreenSize>().getHeightPercent(.072),
         ),
+        if (createNewPasswordProvider.isResetPasswordButtonTriggered) ...[
+          PasswordInputAreaError(
+            isError: !createNewPasswordProvider.isConfirmPasswordValid,
+            isEmpty: createNewPasswordProvider
+                .confirmNewPasswordTextEditingController.text.isEmpty,
+          ),
+        ],
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.04)),
         FilledLongButton(
           onTap: () {

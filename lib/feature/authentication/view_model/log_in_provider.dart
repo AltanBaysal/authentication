@@ -24,6 +24,10 @@ class LogInProvider extends ChangeNotifier {
     return ValidatorUtil.isPasswordValid(passwordTextEditingController.text);
   }
 
+  bool get isFormValid {
+    return (isEmailValid && isPasswordValid);
+  }
+
   void emailLogIn() {
     login();
   }
@@ -41,6 +45,7 @@ class LogInProvider extends ChangeNotifier {
   }
 
   void login() {
+    if (!isPasswordValid) return;
     RouteManager.pushNamed(AppRoutes.homePage);
   }
 }

@@ -22,6 +22,7 @@ class AppTexts {
 
   //3
   static const String invalidEmailFormat = "Invalid email format";
+  static const String invalidPasswordFormat = "Invalid password format";
   static const String createNewPassword = "Create new password";
   static const String enterYourEmail = "Enter your email";
   static const String enterYourPassword = "Enter your password";

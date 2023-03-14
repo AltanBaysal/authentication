@@ -33,7 +33,10 @@ class CreateNewPasswordProvider extends ChangeNotifier {
         confirmNewPasswordTextEditingController.text);
   }
 
+  bool get isFormValid => isNewPasswordValid && isConfirmPasswordValid;
+
   void resetPassword() {
+    if (!isFormValid) return;
     RouteManager.pushNamed(AppRoutes.passwordChangedPage);
   }
 }

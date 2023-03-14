@@ -27,12 +27,23 @@ class SignInPage extends ConsumerWidget {
           height: sl<ScreenSize>().getHeightPercent(.072),
           controller: signInProvider.userNameTextEditingController,
         ),
+        if (signInProvider.isSignInButtonTriggered) ...[
+          EmailInputAreaError(
+            isEmpty: signInProvider.userNameTextEditingController.text.isEmpty,
+          ),
+        ],
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.017)),
         CustomTextField(
           hintText: AppTexts.email,
           height: sl<ScreenSize>().getHeightPercent(.072),
           controller: signInProvider.eMailTextEditingController,
         ),
+        if (signInProvider.isSignInButtonTriggered) ...[
+          EmailInputAreaError(
+            isError: !signInProvider.isEmailValid,
+            isEmpty: signInProvider.eMailTextEditingController.text.isEmpty,
+          ),
+        ],
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.017)),
         CustomPasswordTextField(
           onTap: signInProvider.passwordObscuredToggle,
@@ -41,6 +52,12 @@ class SignInPage extends ConsumerWidget {
           height: sl<ScreenSize>().getHeightPercent(.072),
           controller: signInProvider.passwordTextEditingController,
         ),
+        if (signInProvider.isSignInButtonTriggered) ...[
+          PasswordInputAreaError(
+            isError: !signInProvider.isPasswordValid,
+            isEmpty: signInProvider.passwordTextEditingController.text.isEmpty,
+          ),
+        ],
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.017)),
         CustomPasswordTextField(
           onTap: signInProvider.confirmPasswordObscuredToggle,
@@ -49,6 +66,13 @@ class SignInPage extends ConsumerWidget {
           height: sl<ScreenSize>().getHeightPercent(.072),
           controller: signInProvider.confirmPasswordTextEditingController,
         ),
+        if (signInProvider.isSignInButtonTriggered) ...[
+          PasswordInputAreaError(
+            isError: !signInProvider.isConfirmPasswordValid,
+            isEmpty: signInProvider
+                .confirmPasswordTextEditingController.text.isEmpty,
+          ),
+        ],
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.02)),
         FilledLongButton(
           onTap: () {

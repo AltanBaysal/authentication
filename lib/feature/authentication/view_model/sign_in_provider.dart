@@ -39,7 +39,13 @@ class SignInProvider extends ChangeNotifier {
     );
   }
 
-  void emailSignIn() {}
+  bool get isFormValid {
+    return (isEmailValid && isPasswordValid && isConfirmPasswordValid);
+  }
+
+  void emailSignIn() {
+    if (!isFormValid) return;
+  }
 
   void facebookLogIn() {}
 

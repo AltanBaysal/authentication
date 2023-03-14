@@ -10,3 +10,4 @@ export 'otp_verification_number_input.dart';
 export 'otp_verification_number_input_row.dart';
 export 'text_and_clickable_text.dart';
 export 'email_input_area_error.dart';
+export 'password_input_area_error.dart';

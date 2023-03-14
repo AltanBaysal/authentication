@@ -22,7 +22,10 @@ class LogInPage extends ConsumerWidget {
           obscureText: false,
         ),
         if (logInProvider.isLoginButtonTriggered) ...[
-          const EmailInputAreaError(isError: true, isEmpty: true),
+          EmailInputAreaError(
+            isError: !logInProvider.isEmailValid,
+            isEmpty: logInProvider.eMailTextEditingController.text.isEmpty,
+          ),
         ],
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.017)),
         CustomPasswordTextField(
@@ -32,6 +35,12 @@ class LogInPage extends ConsumerWidget {
           textObscure: ref.watch(Providers.logIn).isPasswordObscured,
           onTap: logInProvider.passwordObscuredToggle,
         ),
+        if (logInProvider.isLoginButtonTriggered) ...[
+          PasswordInputAreaError(
+            isError: !logInProvider.isPasswordValid,
+            isEmpty: logInProvider.passwordTextEditingController.text.isEmpty,
+          ),
+        ],
         const Align(
           alignment: Alignment.centerRight,
           child: ForgotPassword(),
