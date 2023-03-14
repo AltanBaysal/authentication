@@ -29,7 +29,9 @@ class OTPVerificationNumberInput extends StatelessWidget {
         controller: controller,
         keyboardType: TextInputType.number,
         textAlign: TextAlign.center,
-        style: AppTextStyles.title22BoldBlack,
+        style: AppTextStyles.title22Bold.copyWith(
+          color: Colors.black,
+        ),
         decoration: const InputDecoration(
           border: InputBorder.none,
         ),

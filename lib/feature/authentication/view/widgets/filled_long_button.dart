@@ -27,7 +27,9 @@ class FilledLongButton extends StatelessWidget {
         height: sl<ScreenSize>().getHeightPercent(.072),
         child: Text(
           text,
-          style: AppTextStyles.body15SemiBoldWhite,
+          style: AppTextStyles.body15SemiBold.copyWith(
+            color: Colors.white,
+          ),
         ),
       ),
     );

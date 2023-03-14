@@ -5,6 +5,7 @@ class AppIconPaths {
   static const String closedEye = "assets/images/closed_eye.svg";
   static const String nice = "assets/images/nice.svg";
   static const String cross = "assets/images/cross.svg";
+  static const String error = "assets/images/error.svg";
 
   static const String apple = "assets/images/apple_logo.svg";
   static const String facebook = "assets/images/facebook_logo.svg";

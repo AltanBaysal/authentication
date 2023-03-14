@@ -15,7 +15,12 @@ class LinedText extends StatelessWidget {
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8.0),
-          child: Text(text, style: AppTextStyles.body14SemiBoldGrey),
+          child: Text(
+            text,
+            style: AppTextStyles.body14SemiBold.copyWith(
+              color: AppColors.grey,
+            ),
+          ),
         ),
         const Expanded(
           child: Divider(

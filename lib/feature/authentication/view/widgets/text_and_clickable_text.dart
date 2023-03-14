@@ -18,13 +18,23 @@ class TextAndClickableText extends StatelessWidget {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Text(text1, style: AppTextStyles.body15MediumBlack),
+        Text(
+          text1,
+          style: AppTextStyles.body15Medium.copyWith(
+            color: Colors.black,
+          ),
+        ),
         const SizedBox(
           width: 4,
         ),
         GestureDetector(
           onTap: onTap,
-          child: Text(text2, style: AppTextStyles.body15BoldGreen),
+          child: Text(
+            text2,
+            style: AppTextStyles.body15Bold.copyWith(
+              color: AppColors.green,
+            ),
+          ),
         ),
       ],
     );

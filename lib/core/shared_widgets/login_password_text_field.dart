@@ -4,7 +4,6 @@ class CustomPasswordTextField extends StatelessWidget {
   const CustomPasswordTextField({
     super.key,
     required this.hintText,
-    this.validator,
     this.textObscure = true,
     this.onChanged,
     this.onTap,
@@ -16,7 +15,6 @@ class CustomPasswordTextField extends StatelessWidget {
   final Function(String)? onChanged;
   final void Function()? onTap;
   final TextEditingController? controller;
-  final String? Function(String?)? validator;
   final bool textObscure;
   final double? height;
 
@@ -28,7 +26,6 @@ class CustomPasswordTextField extends StatelessWidget {
       hintText: hintText,
       controller: controller,
       obscureText: textObscure,
-      validator: validator,
       suffix: GestureDetector(
         onTap: onTap,
         child: Padding(

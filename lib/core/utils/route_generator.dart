@@ -1,10 +1,7 @@
 import 'package:authentication/core/_core_exports.dart';
-import 'package:authentication/core/shared_widgets/error_page.dart';
-import 'package:authentication/feature/authentication/view/pages/home_page.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
-    print(settings.name);
     switch (settings.name) {
       case AppRoutes.base:
         return MaterialPageRoute(

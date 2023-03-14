@@ -1,5 +1,4 @@
 import 'package:authentication/core/_core_exports.dart';
-import 'package:authentication/core/shared_widgets/error_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -39,14 +38,11 @@ class ChatAI extends StatelessWidget {
 //SOLİD princible+
 //flutterfire cli +
 //Regexp +
-//launcher icon+
-//native splash screen+
+//launcher icon +
+//native splash screen +
+//functional programing +
+//async programing +
 //gmail facebook apple email auth
 //hive
-//functional programing +
-//async programing
 //auto login
 
-//TODO
-//validator view
-//route problem and screensize util problem should be solved

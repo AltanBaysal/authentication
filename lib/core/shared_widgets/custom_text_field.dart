@@ -3,19 +3,19 @@ import 'package:authentication/core/_core_exports.dart';
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
     super.key,
-    required this.hintText,
+    this.hintText = "",
     this.height,
     this.obscureText = true,
     this.onChanged,
     this.controller,
     this.suffix,
-    this.validator,
+    this.color,
   });
 
   final String hintText;
-  final String? Function(String?)? validator;
   final Function(String)? onChanged;
   final TextEditingController? controller;
+  final Color? color;
   final bool obscureText;
   final Widget? suffix;
   final double? height;
@@ -29,22 +29,24 @@ class CustomTextField extends StatelessWidget {
         color: AppColors.lightGrey2,
         borderRadius: BorderRadius.circular(8),
         border: Border.all(
-          color: AppColors.lightGrey3,
+          color: color ?? AppColors.lightGrey3,
         ),
       ),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Expanded(
             child: Form(
               autovalidateMode: AutovalidateMode.onUserInteraction,
               child: TextFormField(
-                validator: validator,
                 cursorColor: Colors.black,
                 obscureText: obscureText,
                 onChanged: onChanged,
                 controller: controller,
                 decoration: InputDecoration(
-                  hintStyle: AppTextStyles.body15MediumLightBlue,
+                  hintStyle: AppTextStyles.body15Medium.copyWith(
+                    color: AppColors.lightBlue4,
+                  ),
                   hintText: hintText,
                   border: InputBorder.none,
                 ),

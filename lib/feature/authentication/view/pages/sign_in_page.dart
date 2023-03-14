@@ -36,7 +36,6 @@ class SignInPage extends ConsumerWidget {
         ),
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.017)),
         CustomPasswordTextField(
-          validator: ValidatorUtil.passwordValidator,
           onTap: ref.read(Providers.signIn.notifier).passwordObscuredToggle,
           textObscure: ref.watch(Providers.signIn).isPasswordObscured,
           hintText: AppTexts.password,
@@ -46,7 +45,6 @@ class SignInPage extends ConsumerWidget {
         ),
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.017)),
         CustomPasswordTextField(
-          validator: ValidatorUtil.passwordValidator,
           onTap:
               ref.read(Providers.signIn.notifier).confirmPasswordObscuredToggle,
           textObscure: ref.watch(Providers.signIn).isConfirmPasswordObscured,

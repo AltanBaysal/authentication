@@ -13,7 +13,9 @@ class ForgotPassword extends StatelessWidget {
         padding: const EdgeInsets.all(5),
         child: Text(
           AppTexts.forgotPassword,
-          style: AppTextStyles.body14SemiBoldGrey,
+          style: AppTextStyles.body14SemiBold.copyWith(
+            color: AppColors.grey,
+          ),
         ),
       ),
     );

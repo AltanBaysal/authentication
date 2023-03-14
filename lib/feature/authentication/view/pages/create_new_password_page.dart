@@ -27,7 +27,6 @@ class CreateNewPasswordPage extends ConsumerWidget {
         ),
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.077)),
         CustomPasswordTextField(
-          validator: ValidatorUtil.passwordValidator,
           onTap: ref
               .read(Providers.createNewPassword.notifier)
               .newPasswordObscuredToggle,
@@ -41,7 +40,6 @@ class CreateNewPasswordPage extends ConsumerWidget {
         ),
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.02)),
         CustomPasswordTextField(
-          validator: ValidatorUtil.passwordValidator,
           onTap: ref
               .read(Providers.createNewPassword.notifier)
               .confirmPasswordObscuredToggle,

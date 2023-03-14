@@ -6,8 +6,8 @@ class CreateNewPasswordProvider extends ChangeNotifier {
   TextEditingController confirmNewPasswordTextEditingController =
       TextEditingController();
 
-  bool isNewPasswordObscured = false;
-  bool isConfirmPasswordObscured = false;
+  bool isNewPasswordObscured = true;
+  bool isConfirmPasswordObscured = true;
 
   void newPasswordObscuredToggle() {
     isNewPasswordObscured = !isNewPasswordObscured;
