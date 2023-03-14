@@ -5,7 +5,7 @@ class LandingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    sl<ScreenSize>().screenSize = MediaQuery.of(context);
+    //for reponse of request
     Future.delayed(const Duration(milliseconds: 2000), () {
       RouteManager.pushNamed(AppRoutes.logInPage);
     });

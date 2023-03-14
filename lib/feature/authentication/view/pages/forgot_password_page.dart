@@ -31,6 +31,7 @@ class ForgotPasswordPage extends ConsumerWidget {
         controller: ref
             .read(Providers.forgotPassword.notifier)
             .eMailTextEditingController,
+        obscureText: false,
       ),
       SizedBox(height: sl<ScreenSize>().getHeightPercent(.03)),
       FilledLongButton(

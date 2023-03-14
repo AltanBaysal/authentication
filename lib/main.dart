@@ -1,4 +1,5 @@
 import 'package:authentication/core/_core_exports.dart';
+import 'package:authentication/core/shared_widgets/error_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -12,6 +13,10 @@ class ChatAI extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      builder: (context, child) {
+        sl<ScreenSize>().screenSize = MediaQuery.of(context);
+        return child ?? const ErrorPage();
+      },
       showSemanticsDebugger: false,
       debugShowCheckedModeBanner: false,
       showPerformanceOverlay: false,
@@ -38,11 +43,10 @@ class ChatAI extends StatelessWidget {
 //native splash screen+
 //gmail facebook apple email auth
 //hive
-//dio
-//functional programing
+//functional programing +
 //async programing
 //auto login
 
 //TODO
-//error and landing page will added
+//validator view
 //route problem and screensize util problem should be solved
