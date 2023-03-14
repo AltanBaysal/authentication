@@ -5,6 +5,8 @@ class ForgotPasswordPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final ForgotPasswordProvider forgotPasswordProvider =
+        ref.read(Providers.forgotPassword.notifier);
     return BaseAuthenticationPage(children: [
       const Align(
         alignment: Alignment.centerLeft,
@@ -28,15 +30,14 @@ class ForgotPasswordPage extends ConsumerWidget {
       CustomTextField(
         hintText: AppTexts.enterYourEmail,
         height: sl<ScreenSize>().getHeightPercent(.072),
-        controller: ref
-            .read(Providers.forgotPassword.notifier)
-            .eMailTextEditingController,
+        controller: forgotPasswordProvider.eMailTextEditingController,
         obscureText: false,
       ),
       SizedBox(height: sl<ScreenSize>().getHeightPercent(.03)),
       FilledLongButton(
         onTap: () {
-          ref.read(Providers.forgotPassword.notifier).sendCode();
+          forgotPasswordProvider.setIsSendCodeButtonTriggeredTrue();
+          forgotPasswordProvider.sendCode();
           RouteManager.pushNamed(AppRoutes.oTPVerificationPage);
         },
         text: AppTexts.sendCode,

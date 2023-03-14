@@ -5,6 +5,8 @@ class OTPVerificationPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final ForgotPasswordProvider forgotPasswordProvider =
+        ref.read(Providers.forgotPassword.notifier);
     return BaseAuthenticationPage(
       children: [
         const Align(
@@ -31,13 +33,14 @@ class OTPVerificationPage extends ConsumerWidget {
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.04)),
         FilledLongButton(
           onTap: () {
-            ref.read(Providers.forgotPassword.notifier).verify();
+            forgotPasswordProvider.setIsVerifyButtonTriggeredTrue();
+            forgotPasswordProvider.verify();
           },
           text: AppTexts.verify,
         ),
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.4)),
         TextAndClickableText(
-          onTap: ref.read(Providers.forgotPassword.notifier).sendCode,
+          onTap: forgotPasswordProvider.sendCode,
           text1: AppTexts.didntReceivedCode,
           text2: AppTexts.resend,
         ),

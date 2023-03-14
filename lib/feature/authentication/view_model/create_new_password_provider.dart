@@ -6,17 +6,31 @@ class CreateNewPasswordProvider extends ChangeNotifier {
   TextEditingController confirmNewPasswordTextEditingController =
       TextEditingController();
 
-  bool isNewPasswordObscured = true;
-  bool isConfirmPasswordObscured = true;
+  bool isResetPasswordButtonTriggered = false;
+  void setIsesetPasswordTriggeredTrue() {
+    isResetPasswordButtonTriggered = true;
+    notifyListeners();
+  }
 
+  bool isNewPasswordObscured = true;
   void newPasswordObscuredToggle() {
     isNewPasswordObscured = !isNewPasswordObscured;
     notifyListeners();
   }
 
+  bool isConfirmPasswordObscured = true;
   void confirmPasswordObscuredToggle() {
     isConfirmPasswordObscured = !isConfirmPasswordObscured;
     notifyListeners();
+  }
+
+  bool get isNewPasswordValid {
+    return ValidatorUtil.isEmailValid(newPasswordTextEditingController.text);
+  }
+
+  bool get isConfirmPasswordValid {
+    return ValidatorUtil.isPasswordValid(
+        confirmNewPasswordTextEditingController.text);
   }
 
   void resetPassword() {

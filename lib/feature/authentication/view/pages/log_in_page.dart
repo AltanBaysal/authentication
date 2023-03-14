@@ -5,6 +5,7 @@ class LogInPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final LogInProvider logInProvider = ref.read(Providers.logIn.notifier);
     return BaseAuthenticationPage(
       children: [
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.123)),
@@ -16,19 +17,20 @@ class LogInPage extends ConsumerWidget {
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.077)),
         CustomTextField(
           hintText: AppTexts.enterYourEmail,
-          controller:
-              ref.read(Providers.logIn.notifier).eMailTextEditingController,
+          controller: logInProvider.eMailTextEditingController,
           height: sl<ScreenSize>().getHeightPercent(.072),
           obscureText: false,
         ),
+        if (logInProvider.isLoginButtonTriggered) ...[
+          const EmailInputAreaError(isError: true, isEmpty: true),
+        ],
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.017)),
         CustomPasswordTextField(
           height: sl<ScreenSize>().getHeightPercent(.072),
           hintText: AppTexts.enterYourPassword,
-          controller:
-              ref.read(Providers.logIn.notifier).passwordTextEditingController,
+          controller: logInProvider.passwordTextEditingController,
           textObscure: ref.watch(Providers.logIn).isPasswordObscured,
-          onTap: ref.read(Providers.logIn.notifier).passwordObscuredToggle,
+          onTap: logInProvider.passwordObscuredToggle,
         ),
         const Align(
           alignment: Alignment.centerRight,
@@ -36,7 +38,10 @@ class LogInPage extends ConsumerWidget {
         ),
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.077)),
         FilledLongButton(
-          onTap: ref.read(Providers.logIn.notifier).emailLogIn,
+          onTap: () {
+            logInProvider.setIsLoginButtonTriggeredTrue();
+            logInProvider.emailLogIn();
+          },
           text: AppTexts.login,
         ),
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.035)),

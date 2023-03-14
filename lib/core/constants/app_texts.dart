@@ -7,6 +7,7 @@ class AppTexts {
   static const String username = "Username";
   static const String email = "Email";
   static const String password = "Password";
+  static const String required = "Required";
   //2
   static const String sendCode = "Send Code";
   static const String passwordChanged = "Password Changed!";
@@ -20,6 +21,7 @@ class AppTexts {
   static const String forgotPassword = "Forgot Password?";
 
   //3
+  static const String invalidEmailFormat = "Invalid email format";
   static const String createNewPassword = "Create new password";
   static const String enterYourEmail = "Enter your email";
   static const String enterYourPassword = "Enter your password";

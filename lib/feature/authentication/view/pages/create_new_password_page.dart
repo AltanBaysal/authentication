@@ -5,6 +5,8 @@ class CreateNewPasswordPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final CreateNewPasswordProvider createNewPasswordProvider =
+        ref.read(Providers.createNewPassword.notifier);
     return BaseAuthenticationPage(
       children: [
         const Align(
@@ -27,33 +29,30 @@ class CreateNewPasswordPage extends ConsumerWidget {
         ),
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.077)),
         CustomPasswordTextField(
-          onTap: ref
-              .read(Providers.createNewPassword.notifier)
-              .newPasswordObscuredToggle,
+          onTap: createNewPasswordProvider.newPasswordObscuredToggle,
           textObscure:
               ref.watch(Providers.createNewPassword).isNewPasswordObscured,
-          controller: ref
-              .read(Providers.createNewPassword.notifier)
-              .newPasswordTextEditingController,
+          controller:
+              createNewPasswordProvider.newPasswordTextEditingController,
           hintText: AppTexts.newPassword,
           height: sl<ScreenSize>().getHeightPercent(.072),
         ),
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.02)),
         CustomPasswordTextField(
-          onTap: ref
-              .read(Providers.createNewPassword.notifier)
-              .confirmPasswordObscuredToggle,
+          onTap: createNewPasswordProvider.confirmPasswordObscuredToggle,
           textObscure:
               ref.watch(Providers.createNewPassword).isConfirmPasswordObscured,
-          controller: ref
-              .read(Providers.createNewPassword.notifier)
-              .confirmNewPasswordTextEditingController,
+          controller:
+              createNewPasswordProvider.confirmNewPasswordTextEditingController,
           hintText: AppTexts.confirmpassword,
           height: sl<ScreenSize>().getHeightPercent(.072),
         ),
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.04)),
         FilledLongButton(
-          onTap: ref.read(Providers.createNewPassword.notifier).resetPassword,
+          onTap: () {
+            createNewPasswordProvider.setIsesetPasswordTriggeredTrue();
+            createNewPasswordProvider.resetPassword();
+          },
           text: AppTexts.resetPassword,
         ),
       ],

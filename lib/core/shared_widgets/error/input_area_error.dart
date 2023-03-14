@@ -22,7 +22,7 @@ class InputAreaError extends StatelessWidget {
         children: [
           AppSvgPicture(
             svg: AppIconPaths.error,
-            height: iconSize ?? sl<ScreenSize>().getHeightPercent(0.5),
+            height: iconSize ?? sl<ScreenSize>().getHeightPercent(0.016),
           ),
           SizedBox(width: space),
           Text(
