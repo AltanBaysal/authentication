@@ -9,7 +9,6 @@ class ForgotPasswordProvider extends ChangeNotifier {
   TextEditingController oTP4TextEditingController = TextEditingController();
 
   bool isSendCodeButtonTriggered = false;
-
   void setIsSendCodeButtonTriggeredTrue() {
     isSendCodeButtonTriggered = true;
     notifyListeners();

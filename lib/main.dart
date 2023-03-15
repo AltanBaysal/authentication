@@ -35,7 +35,7 @@ class ChatAI extends StatelessWidget {
 //flutter routes +
 //firebase +
 //open close +
-//SOLİD princible+
+//SOLİD princible +
 //flutterfire cli +
 //Regexp +
 //launcher icon +
@@ -46,3 +46,5 @@ class ChatAI extends StatelessWidget {
 //hive
 //auto login
 
+//Notify hatasını çöz
+//Loginleri bağla

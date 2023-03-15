@@ -18,7 +18,7 @@ class EmailInputAreaError extends StatelessWidget {
         text: AppTexts.required,
       );
     }
-    if (!isError) {
+    if (isError) {
       return const InputAreaError(
         padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
         text: AppTexts.invalidEmailFormat,

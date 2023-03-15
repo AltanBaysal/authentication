@@ -7,6 +7,7 @@ class ForgotPasswordPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final ForgotPasswordProvider forgotPasswordProvider =
         ref.read(Providers.forgotPassword.notifier);
+
     return BaseAuthenticationPage(children: [
       const Align(
         alignment: Alignment.centerLeft,
@@ -33,7 +34,9 @@ class ForgotPasswordPage extends ConsumerWidget {
         controller: forgotPasswordProvider.eMailTextEditingController,
         obscureText: false,
       ),
-      if (forgotPasswordProvider.isSendCodeButtonTriggered) ...[
+      if (ref
+          .watch(Providers.forgotPassword.notifier)
+          .isSendCodeButtonTriggered) ...[
         EmailInputAreaError(
           isError: !forgotPasswordProvider.isEmailValid,
           isEmpty:
