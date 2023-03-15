@@ -7,7 +7,7 @@ class LandingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     //for reponse of request
     Future.delayed(const Duration(milliseconds: 2000), () {
-      RouteManager.pushNamed(AppRoutes.logInPage);
+      RouteManager.pushReplacementNamed(AppRoutes.logInPage);
     });
     return Scaffold(
       body: Center(

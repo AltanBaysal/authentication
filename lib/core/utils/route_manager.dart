@@ -13,4 +13,17 @@ class RouteManager {
     return GlobalContextKey.instance.globalKey.currentState
         ?.pushNamed(path, arguments: arguments);
   }
+
+  static Future<T?>? pushReplacementNamed<T extends Object?>(
+    String path, {
+    Object? arguments,
+  }) {
+    if (GlobalContextKey.instance.globalKey.currentState == null) {
+      ScaffoldMessenger.of(
+        GlobalContextKey.instance.globalKey.currentContext!,
+      ).clearSnackBars();
+    }
+    return GlobalContextKey.instance.globalKey.currentState
+        ?.pushReplacementNamed(path, arguments: arguments);
+  }
 }

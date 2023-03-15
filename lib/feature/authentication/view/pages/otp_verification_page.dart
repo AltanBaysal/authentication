@@ -31,8 +31,9 @@ class OTPVerificationPage extends ConsumerWidget {
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.077)),
         const OTPVerificationNumberInputRow(),
         if (ref.watch(Providers.forgotPassword).isVerifyButtonTriggered) ...[
-          const InputAreaError(
-            padding: EdgeInsets.symmetric(vertical: 8, horizontal: 5),
+          InputAreaError(
+            error: forgotPasswordProvider.isOTPEmpty,
+            padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 5),
             text: AppTexts.required,
           ),
         ],
