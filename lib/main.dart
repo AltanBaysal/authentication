@@ -46,5 +46,4 @@ class ChatAI extends StatelessWidget {
 //hive
 //auto login
 
-//Notify hatasını çöz
 //Loginleri bağla

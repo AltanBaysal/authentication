@@ -34,9 +34,7 @@ class ForgotPasswordPage extends ConsumerWidget {
         controller: forgotPasswordProvider.eMailTextEditingController,
         obscureText: false,
       ),
-      if (ref
-          .watch(Providers.forgotPassword.notifier)
-          .isSendCodeButtonTriggered) ...[
+      if (ref.watch(Providers.forgotPassword).isSendCodeButtonTriggered) ...[
         EmailInputAreaError(
           isError: !forgotPasswordProvider.isEmailValid,
           isEmpty:

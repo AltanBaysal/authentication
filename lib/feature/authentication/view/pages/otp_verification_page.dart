@@ -30,9 +30,10 @@ class OTPVerificationPage extends ConsumerWidget {
         ),
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.077)),
         const OTPVerificationNumberInputRow(),
-        if (forgotPasswordProvider.isVerifyButtonTriggered) ...[
-          EmailInputAreaError(
-            isEmpty: forgotPasswordProvider.isOTPEmpty,
+        if (ref.watch(Providers.forgotPassword).isVerifyButtonTriggered) ...[
+          const InputAreaError(
+            padding: EdgeInsets.symmetric(vertical: 8, horizontal: 5),
+            text: AppTexts.required,
           ),
         ],
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.04)),
