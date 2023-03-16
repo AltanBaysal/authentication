@@ -49,7 +49,6 @@ class LogInPage extends ConsumerWidget {
         FilledLongButton(
           onTap: () {
             logInProvider.setIsLoginButtonTriggeredTrue();
-            logInProvider.emailLogIn();
           },
           text: AppTexts.login,
         ),

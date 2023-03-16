@@ -27,25 +27,4 @@ class LogInProvider extends ChangeNotifier {
   bool get isFormValid {
     return (isEmailValid && isPasswordValid);
   }
-
-  void emailLogIn() {
-    logIn();
-  }
-
-  void facebookLogIn() {
-    logIn();
-  }
-
-  void googleLogIn() {
-    //GoogleAuth().singIn();
-  }
-
-  void appleLogIn() {
-    logIn();
-  }
-
-  void logIn() {
-    if (!isPasswordValid) return;
-    RouteManager.pushNamed(AppRoutes.homePage);
-  }
 }

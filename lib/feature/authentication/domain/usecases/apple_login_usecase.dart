@@ -1,8 +1,8 @@
-/*import 'package:firebase_auth/firebase_auth.dart';
-import 'package:google_sign_in/google_sign_in.dart';
+import 'package:authentication/core/_core_exports.dart';
 
-class GoogleAuth {
-  Future<UserCredential> singIn() async {
+//TODO
+class AppleLogInUsecase {
+  Future<UserCredential> call() async {
     //begin interactive sign in process
     final GoogleSignInAccount? gUser = await GoogleSignIn().signIn();
 
@@ -18,4 +18,4 @@ class GoogleAuth {
     //sign in
     return await FirebaseAuth.instance.signInWithCredential(credential);
   }
-}*/
+}

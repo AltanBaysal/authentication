@@ -45,3 +45,7 @@ class ChatAI extends StatelessWidget {
 //gmail facebook apple email auth +
 //hive
 //auto login
+
+//todo
+//showdialog with circule progress indicator
+//handle exceptions

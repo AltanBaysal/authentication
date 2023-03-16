@@ -42,8 +42,4 @@ class SignInProvider extends ChangeNotifier {
   bool get isFormValid {
     return (isEmailValid && isPasswordValid && isConfirmPasswordValid);
   }
-
-  void emailSignIn() {
-    if (!isFormValid) return;
-  }
 }

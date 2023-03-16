@@ -10,3 +10,5 @@ export 'package:firebase_core/firebase_core.dart';
 export 'package:authentication/feature/_feature_exports.dart';
 export 'package:authentication/firebase_options.dart';
 export 'package:flutter_riverpod/flutter_riverpod.dart';
+export 'package:firebase_auth/firebase_auth.dart';
+export 'package:google_sign_in/google_sign_in.dart';
