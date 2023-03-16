@@ -66,6 +66,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '799641977800',
     projectId: 'authentication-365e9',
     storageBucket: 'authentication-365e9.appspot.com',
+    androidClientId: '799641977800-hd1erts2m4tfpc9h7ks6drpbifb4m5am.apps.googleusercontent.com',
     iosClientId: '799641977800-qid40pmlr65ka855cl75t1mv2gsucsta.apps.googleusercontent.com',
     iosBundleId: 'com.example.authentication',
   );
@@ -76,6 +77,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '799641977800',
     projectId: 'authentication-365e9',
     storageBucket: 'authentication-365e9.appspot.com',
+    androidClientId: '799641977800-hd1erts2m4tfpc9h7ks6drpbifb4m5am.apps.googleusercontent.com',
     iosClientId: '799641977800-qid40pmlr65ka855cl75t1mv2gsucsta.apps.googleusercontent.com',
     iosBundleId: 'com.example.authentication',
   );

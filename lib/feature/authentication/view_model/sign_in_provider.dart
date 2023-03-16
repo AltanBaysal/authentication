@@ -46,10 +46,4 @@ class SignInProvider extends ChangeNotifier {
   void emailSignIn() {
     if (!isFormValid) return;
   }
-
-  void facebookLogIn() {}
-
-  void googleLogIn() {}
-
-  void appleLogIn() {}
 }

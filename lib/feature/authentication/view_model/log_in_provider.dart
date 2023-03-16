@@ -29,22 +29,22 @@ class LogInProvider extends ChangeNotifier {
   }
 
   void emailLogIn() {
-    login();
+    logIn();
   }
 
   void facebookLogIn() {
-    login();
+    logIn();
   }
 
   void googleLogIn() {
-    login();
+    //GoogleAuth().singIn();
   }
 
   void appleLogIn() {
-    login();
+    logIn();
   }
 
-  void login() {
+  void logIn() {
     if (!isPasswordValid) return;
     RouteManager.pushNamed(AppRoutes.homePage);
   }

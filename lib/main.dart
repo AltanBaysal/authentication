@@ -36,14 +36,12 @@ class ChatAI extends StatelessWidget {
 //firebase +
 //open close +
 //SOLİD princible +
-//flutterfire cli +
+//flutterfire cli +++
 //Regexp +
 //launcher icon +
 //native splash screen +
 //functional programing +
 //async programing +
-//gmail facebook apple email auth
+//gmail facebook apple email auth +
 //hive
 //auto login
-
-//Loginleri bağla

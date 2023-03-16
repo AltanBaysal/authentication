@@ -19,7 +19,9 @@ class LoginWithButtonsRow extends ConsumerWidget {
         const SizedBox(width: 8),
         Expanded(
           child: LoginWithButton(
-            onTap: ref.read(Providers.logIn.notifier).googleLogIn,
+            onTap: () {
+              ref.read(Providers.logIn.notifier).googleLogIn();
+            },
             icon: AppIconPaths.google,
             height: sl<ScreenSize>().getHeightPercent(.072),
             iconSize: sl<ScreenSize>().getHeightPercent(.03),
