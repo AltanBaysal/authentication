@@ -3,19 +3,12 @@ import 'package:authentication/core/_core_exports.dart';
 //TODO
 class FacebookLoginUsecase {
   Future<UserCredential> call() async {
-    //begin interactive sign in process
-    final GoogleSignInAccount? gUser = await GoogleSignIn().signIn();
+    final LoginResult result = await FacebookAuth.instance.login();
 
-    //obtain auth details from request
-    final GoogleSignInAuthentication gAuth = await gUser!.authentication;
-
-    //create a new credential for user
-    final credential = GoogleAuthProvider.credential(
-      accessToken: gAuth.accessToken,
-      idToken: gAuth.idToken,
+    final OAuthCredential credential = FacebookAuthProvider.credential(
+      result.accessToken!.token,
     );
 
-    //sign in
     return await FirebaseAuth.instance.signInWithCredential(credential);
   }
 }

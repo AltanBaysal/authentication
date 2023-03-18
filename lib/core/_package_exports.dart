@@ -12,3 +12,4 @@ export 'package:authentication/firebase_options.dart';
 export 'package:flutter_riverpod/flutter_riverpod.dart';
 export 'package:firebase_auth/firebase_auth.dart';
 export 'package:google_sign_in/google_sign_in.dart';
+export 'package:flutter_facebook_auth/flutter_facebook_auth.dart';

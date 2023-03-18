@@ -1,5 +1,6 @@
 import 'package:authentication/core/_core_exports.dart';
 
+//todo service locatordan al
 class AuthenticationProvider extends ChangeNotifier {
   Future<void> signOut() async {
     await SignOutUsecase().call();
@@ -7,6 +8,7 @@ class AuthenticationProvider extends ChangeNotifier {
 
   Future<void> emailSignIn() async {
     await EmailSignInUsecase().call();
+    logIn();
   }
 
   Future<void> emailLogIn() async {
@@ -15,6 +17,7 @@ class AuthenticationProvider extends ChangeNotifier {
   }
 
   Future<void> facebookLogIn() async {
+    await FacebookLoginUsecase().call();
     logIn();
   }
 
@@ -24,6 +27,7 @@ class AuthenticationProvider extends ChangeNotifier {
   }
 
   Future<void> appleLogIn() async {
+    await AppleLogInUsecase().call();
     logIn();
   }
 

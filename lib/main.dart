@@ -48,4 +48,7 @@ class ChatAI extends StatelessWidget {
 
 //todo
 //showdialog with circule progress indicator
+//show error like wrong password
 //handle exceptions
+//refactor errorview
+//look at svg
