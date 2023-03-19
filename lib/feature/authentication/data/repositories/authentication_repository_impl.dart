@@ -24,19 +24,22 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
 
   @override
   Future<Either<Failure, UserCredential>> emailSignIn(
-      EmailSignInParam params) async {
+    EmailSignInParam params,
+  ) async {
     throw UnimplementedError();
   }
 
   @override
   Future<Either<Failure, UserCredential>> facebookLogIn(NoParams params) async {
-    final LoginResult result = await FacebookAuth.instance.login();
+    return _errorHandler<UserCredential>(() async {
+      final LoginResult result = await FacebookAuth.instance.login();
 
-    final OAuthCredential credential = FacebookAuthProvider.credential(
-      result.accessToken!.token,
-    );
+      final OAuthCredential credential = FacebookAuthProvider.credential(
+        result.accessToken!.token,
+      );
 
-    return _firebaseCredentialLogIn(credential);
+      return _firebaseCredentialLogIn(credential);
+    });
   }
 
   @override
@@ -73,6 +76,16 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
         default:
           return Left(ServerFailure());
       }
+    }
+  }
+
+  Future<Either<Failure, T>> _errorHandler<T>(
+    Future<Either<Failure, T>> Function() func,
+  ) async {
+    try {
+      return func();
+    } catch (e) {
+      return Left(UnImplementedFailure());
     }
   }
 }

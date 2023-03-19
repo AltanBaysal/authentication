@@ -42,3 +42,8 @@ class WeakPasswordFailure extends Failure {
   @override
   List<Object?> get props => [];
 }
+
+class UnImplementedFailure extends Failure {
+  @override
+  List<Object?> get props => [];
+}
