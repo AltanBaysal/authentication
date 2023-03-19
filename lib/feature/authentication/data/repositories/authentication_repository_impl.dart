@@ -12,21 +12,48 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
 
   @override
   Future<Either<Failure, UserCredential>> signOut(NoParams params) async {
-    throw UnimplementedError();
+    return _errorHandler<UserCredential>(() async {
+      throw UnimplementedError();
+    });
   }
 
   @override
   Future<Either<Failure, UserCredential>> emailLogIn(
     EmailLogInParam params,
   ) async {
-    throw UnimplementedError();
+    return _errorHandler<UserCredential>(() async {
+      throw UnimplementedError();
+    });
+    ;
   }
 
   @override
   Future<Either<Failure, UserCredential>> emailSignIn(
     EmailSignInParam params,
   ) async {
-    throw UnimplementedError();
+    return _errorHandler<UserCredential>(
+      () async {
+        try {
+          final UserCredential credential =
+              await FirebaseAuth.instance.signInWithEmailAndPassword(
+            email: params.email,
+            password: params.password,
+          );
+          return Right(credential);
+        } on FirebaseAuthException catch (e) {
+          switch (e.message) {
+            case "invalid-email":
+              return Left(UserNotFoundFailure());
+            case "user-not-found":
+              return Left(WrongPasswordFailure());
+            case "wrong-password":
+              return Left(WrongPasswordFailure());
+            default:
+              rethrow;
+          }
+        }
+      },
+    );
   }
 
   @override
@@ -44,17 +71,34 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
 
   @override
   Future<Either<Failure, UserCredential>> googleLogIn(NoParams params) async {
-    throw UnimplementedError();
+    return _errorHandler<UserCredential>(() async {
+      final GoogleSignInAccount? gUser = await GoogleSignIn().signIn();
+
+      final GoogleSignInAuthentication gAuth = await gUser!.authentication;
+
+      final credential = GoogleAuthProvider.credential(
+        accessToken: gAuth.accessToken,
+        idToken: gAuth.idToken,
+      );
+
+      return _firebaseCredentialLogIn(credential);
+    });
   }
 
   @override
   Future<Either<Failure, UserCredential>> twitterLogIn(NoParams params) async {
-    throw UnimplementedError();
+    return _errorHandler<UserCredential>(() async {
+      //TODO implement
+      throw UnimplementedError();
+    });
   }
 
   @override
   Future<Either<Failure, UserCredential>> autoLogIn(NoParams params) async {
-    throw UnimplementedError();
+    return _errorHandler<UserCredential>(() async {
+      //TODO implement
+      throw UnimplementedError();
+    });
   }
 
   Future<Either<Failure, UserCredential>> _firebaseCredentialLogIn(
@@ -67,6 +111,7 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
       return Right(
         await FirebaseAuth.instance.signInWithCredential(credential),
       );
+      //TODO test et
     } on FirebaseAuthException catch (e) {
       switch (e.message) {
         case "user-not-found":
@@ -74,7 +119,7 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
         case "wrong-password":
           return Left(WrongPasswordFailure());
         default:
-          return Left(ServerFailure());
+          rethrow;
       }
     }
   }
