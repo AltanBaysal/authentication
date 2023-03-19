@@ -7,7 +7,7 @@ class AppIconPaths {
   static const String cross = "assets/images/cross.svg";
   static const String error = "assets/images/error.svg";
 
-  static const String apple = "assets/images/apple_logo.svg";
+  static const String twitter = "assets/images/twitter_logo.svg";
   static const String facebook = "assets/images/facebook_logo.svg";
   static const String google = "assets/images/google_logo.svg";
   static const String appLogoSvg = "assets/images/watermelon.svg";

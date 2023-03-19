@@ -1,7 +1,7 @@
 import 'package:authentication/core/_core_exports.dart';
 
 //TODO
-class AppleLogInUsecase {
+class TwitterLogInUsecase {
   Future<UserCredential> call() async {
     final GoogleSignInAccount? gUser = await GoogleSignIn().signIn();
 

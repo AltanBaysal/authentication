@@ -27,7 +27,7 @@ class LoginWithButtonsRow extends StatelessWidget {
         const SizedBox(width: 8),
         Expanded(
           child: LoginWithButton(
-            icon: AppIconPaths.apple,
+            icon: AppIconPaths.twitter,
             height: sl<ScreenSize>().getHeightPercent(.072),
             iconSize: sl<ScreenSize>().getHeightPercent(.03),
           ),

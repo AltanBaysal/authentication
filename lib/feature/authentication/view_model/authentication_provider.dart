@@ -26,8 +26,8 @@ class AuthenticationProvider extends ChangeNotifier {
     logIn();
   }
 
-  Future<void> appleLogIn() async {
-    await AppleLogInUsecase().call();
+  Future<void> twitterLogIn() async {
+    await TwitterLogInUsecase().call();
     logIn();
   }
 
