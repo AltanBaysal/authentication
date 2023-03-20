@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:authentication/core/_core_exports.dart';
 import 'package:dartz/dartz.dart';
 
@@ -11,20 +9,34 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
   });
 
   @override
-  Future<Either<Failure, UserCredential>> signOut(NoParams params) async {
-    return _errorHandler<UserCredential>(() async {
-      throw UnimplementedError();
-    });
+  Future<Either<Failure, void>> signOut(NoParams params) async {
+    if (!await networkInfo.isConnected) {
+      return Left(NoInternetConnectionFailure());
+    }
+    return _errorHandler<void>(
+      () async {
+        return Right(FirebaseAuth.instance.signOut());
+      },
+    );
   }
 
   @override
   Future<Either<Failure, UserCredential>> emailLogIn(
     EmailLogInParam params,
   ) async {
-    return _errorHandler<UserCredential>(() async {
-      throw UnimplementedError();
-    });
-    ;
+    return _errorHandler<UserCredential>(
+      () async {
+        if (!await networkInfo.isConnected) {
+          return Left(NoInternetConnectionFailure());
+        }
+        final UserCredential credential =
+            await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: params.email,
+          password: params.password,
+        );
+        return Right(credential);
+      },
+    );
   }
 
   @override
@@ -33,25 +45,15 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
   ) async {
     return _errorHandler<UserCredential>(
       () async {
-        try {
-          final UserCredential credential =
-              await FirebaseAuth.instance.signInWithEmailAndPassword(
-            email: params.email,
-            password: params.password,
-          );
-          return Right(credential);
-        } on FirebaseAuthException catch (e) {
-          switch (e.message) {
-            case "invalid-email":
-              return Left(UserNotFoundFailure());
-            case "user-not-found":
-              return Left(WrongPasswordFailure());
-            case "wrong-password":
-              return Left(WrongPasswordFailure());
-            default:
-              rethrow;
-          }
+        if (!await networkInfo.isConnected) {
+          return Left(NoInternetConnectionFailure());
         }
+        final UserCredential credential =
+            await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: params.email,
+          password: params.password,
+        );
+        return Right(credential);
       },
     );
   }
@@ -71,32 +73,35 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
 
   @override
   Future<Either<Failure, UserCredential>> googleLogIn(NoParams params) async {
-    return _errorHandler<UserCredential>(() async {
-      final GoogleSignInAccount? gUser = await GoogleSignIn().signIn();
+    return _errorHandler<UserCredential>(
+      () async {
+        final GoogleSignInAccount? gUser = await GoogleSignIn().signIn();
 
-      final GoogleSignInAuthentication gAuth = await gUser!.authentication;
+        final GoogleSignInAuthentication gAuth = await gUser!.authentication;
 
-      final credential = GoogleAuthProvider.credential(
-        accessToken: gAuth.accessToken,
-        idToken: gAuth.idToken,
-      );
+        final credential = GoogleAuthProvider.credential(
+          accessToken: gAuth.accessToken,
+          idToken: gAuth.idToken,
+        );
 
-      return _firebaseCredentialLogIn(credential);
-    });
+        return _firebaseCredentialLogIn(credential);
+      },
+    );
   }
 
   @override
   Future<Either<Failure, UserCredential>> twitterLogIn(NoParams params) async {
     return _errorHandler<UserCredential>(() async {
-      //TODO implement
+      //TODO unimplemented
       throw UnimplementedError();
+      //return _firebaseCredentialLogIn(credential);
     });
   }
 
   @override
   Future<Either<Failure, UserCredential>> autoLogIn(NoParams params) async {
     return _errorHandler<UserCredential>(() async {
-      //TODO implement
+      //TODO unimplemented
       throw UnimplementedError();
     });
   }
@@ -107,21 +112,9 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
     if (!await networkInfo.isConnected) {
       return Left(NoInternetConnectionFailure());
     }
-    try {
-      return Right(
-        await FirebaseAuth.instance.signInWithCredential(credential),
-      );
-      //TODO test et
-    } on FirebaseAuthException catch (e) {
-      switch (e.message) {
-        case "user-not-found":
-          return Left(UserNotFoundFailure());
-        case "wrong-password":
-          return Left(WrongPasswordFailure());
-        default:
-          rethrow;
-      }
-    }
+    return Right(
+      await FirebaseAuth.instance.signInWithCredential(credential),
+    );
   }
 
   Future<Either<Failure, T>> _errorHandler<T>(
@@ -129,6 +122,8 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
   ) async {
     try {
       return func();
+    } on FirebaseAuthException catch (e) {
+      return Left(e.toFailure);
     } catch (e) {
       return Left(UnImplementedFailure());
     }

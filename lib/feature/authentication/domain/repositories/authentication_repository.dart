@@ -6,7 +6,7 @@ abstract class AuthenticationRepository {
   Future<Either<Failure, UserCredential>> emailSignIn(EmailSignInParam params);
   Future<Either<Failure, UserCredential>> facebookLogIn(NoParams params);
   Future<Either<Failure, UserCredential>> googleLogIn(NoParams params);
-  Future<Either<Failure, UserCredential>> signOut(NoParams params);
+  Future<Either<Failure, void>> signOut(NoParams params);
   Future<Either<Failure, UserCredential>> twitterLogIn(NoParams params);
   Future<Either<Failure, UserCredential>> autoLogIn(NoParams params);
 }
