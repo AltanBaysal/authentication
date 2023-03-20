@@ -1,12 +1,14 @@
 import 'package:authentication/core/_core_exports.dart';
+import 'package:dartz/dartz.dart';
 
 //TODO
-class EmailSignInUsecase {
-  Future<UserCredential> call() async {
-    return await FirebaseAuth.instance.createUserWithEmailAndPassword(
-      //TODO
-      email: "ab@gmail.com",
-      password: "123456",
-    );
+class EmailSignInUsecase implements UseCase<UserCredential, EmailSignInParam> {
+  final AuthenticationRepository authenticationRepository;
+
+  EmailSignInUsecase(this.authenticationRepository);
+
+  @override
+  Future<Either<Failure, UserCredential>> call(EmailSignInParam params) {
+    return authenticationRepository.emailSignIn(params);
   }
 }

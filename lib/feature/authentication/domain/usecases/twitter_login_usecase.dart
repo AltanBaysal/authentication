@@ -1,17 +1,14 @@
 import 'package:authentication/core/_core_exports.dart';
+import 'package:dartz/dartz.dart';
 
 //TODO
-class TwitterLogInUsecase {
-  Future<UserCredential> call() async {
-    final GoogleSignInAccount? gUser = await GoogleSignIn().signIn();
+class TwitterLogInUsecase implements UseCase<UserCredential, NoParams> {
+  final AuthenticationRepository authenticationRepository;
 
-    final GoogleSignInAuthentication gAuth = await gUser!.authentication;
+  TwitterLogInUsecase(this.authenticationRepository);
 
-    final credential = GoogleAuthProvider.credential(
-      accessToken: gAuth.accessToken,
-      idToken: gAuth.idToken,
-    );
-
-    return await FirebaseAuth.instance.signInWithCredential(credential);
+  @override
+  Future<Either<Failure, UserCredential>> call(NoParams params) {
+    return authenticationRepository.twitterLogIn(params);
   }
 }

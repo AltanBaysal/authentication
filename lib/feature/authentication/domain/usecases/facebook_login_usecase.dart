@@ -1,14 +1,14 @@
 import 'package:authentication/core/_core_exports.dart';
+import 'package:dartz/dartz.dart';
 
 //TODO
-class FacebookLoginUsecase {
-  Future<UserCredential> call() async {
-    final LoginResult result = await FacebookAuth.instance.login();
+class FacebookLoginUsecase implements UseCase<UserCredential, NoParams> {
+  final AuthenticationRepository authenticationRepository;
 
-    final OAuthCredential credential = FacebookAuthProvider.credential(
-      result.accessToken!.token,
-    );
+  FacebookLoginUsecase(this.authenticationRepository);
 
-    return await FirebaseAuth.instance.signInWithCredential(credential);
+  @override
+  Future<Either<Failure, UserCredential>> call(NoParams params) {
+    return authenticationRepository.facebookLogIn(params);
   }
 }

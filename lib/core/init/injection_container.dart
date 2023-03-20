@@ -9,34 +9,67 @@ Future<void> init() async {
 }
 
 Future<void> initFeatures() async {
-  sl.registerLazySingleton<StateProvider<CreateNewPasswordProvider>>(
-    () => StateProvider<CreateNewPasswordProvider>(
-      (ref) => CreateNewPasswordProvider(),
+  //providers
+  sl.registerLazySingleton<CreateNewPasswordProvider>(
+    () => CreateNewPasswordProvider(),
+  );
+  sl.registerLazySingleton<ForgotPasswordProvider>(
+    () => ForgotPasswordProvider(),
+  );
+  sl.registerLazySingleton<LogInProvider>(
+    () => LogInProvider(),
+  );
+  sl.registerLazySingleton<SignInProvider>(
+    () => SignInProvider(),
+  );
+  sl.registerLazySingleton<AuthenticationProvider>(
+    () => AuthenticationProvider(
+      autoLoginUsecase: sl(),
+      emailLogInUsecase: sl(),
+      emailSignInUsecase: sl(),
+      facebookLoginUsecase: sl(),
+      googleLoginUsecase: sl(),
+      signOutUsecase: sl(),
+      twitterLogInUsecase: sl(),
     ),
   );
-  sl.registerLazySingleton<StateProvider<ForgotPasswordProvider>>(
-    () => StateProvider<ForgotPasswordProvider>(
-      (ref) => ForgotPasswordProvider(),
-    ),
+
+  //usecases
+  sl.registerLazySingleton<AutoLoginUsecase>(() => AutoLoginUsecase(sl()));
+
+  sl.registerLazySingleton<EmailLogInUsecase>(() => EmailLogInUsecase(sl()));
+
+  sl.registerLazySingleton<EmailSignInUsecase>(() => EmailSignInUsecase(sl()));
+
+  sl.registerLazySingleton<FacebookLoginUsecase>(
+    () => FacebookLoginUsecase(sl()),
   );
-  sl.registerLazySingleton<StateProvider<LogInProvider>>(
-    () => StateProvider<LogInProvider>(
-      (ref) => LogInProvider(),
-    ),
+
+  sl.registerLazySingleton<GoogleLoginUsecase>(() => GoogleLoginUsecase(sl()));
+
+  sl.registerLazySingleton<SignOutUsecase>(() => SignOutUsecase(sl()));
+
+  sl.registerLazySingleton<TwitterLogInUsecase>(
+    () => TwitterLogInUsecase(sl()),
   );
-  sl.registerLazySingleton<StateProvider<SignInProvider>>(
-    () => StateProvider<SignInProvider>(
-      (ref) => SignInProvider(),
-    ),
+
+  //repository
+  sl.registerLazySingleton<AuthenticationRepository>(
+    () => AuthenticationRepositoryImpl(networkInfo: sl()),
   );
 }
 
 Future<void> initCore() async {
   sl.registerLazySingleton<ScreenSize>(() => ScreenSize());
+  sl.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl(sl()));
 }
 
 Future<void> initExternal() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
+  );
+
+  sl.registerLazySingleton<InternetConnectionChecker>(
+    () => InternetConnectionChecker(),
   );
 }
