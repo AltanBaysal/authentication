@@ -3,11 +3,11 @@ import 'package:authentication/core/_core_exports.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await init();
-  runApp(const ProviderScope(child: ChatAI()));
+  runApp(const ProviderScope(child: Authentication()));
 }
 
-class ChatAI extends StatelessWidget {
-  const ChatAI({super.key});
+class Authentication extends StatelessWidget {
+  const Authentication({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -52,3 +52,4 @@ class ChatAI extends StatelessWidget {
 //handle exceptions
 //refactor errorview
 //look at svg
+//look at error handler

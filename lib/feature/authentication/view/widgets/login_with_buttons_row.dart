@@ -10,6 +10,7 @@ class LoginWithButtonsRow extends StatelessWidget {
       children: [
         Expanded(
           child: LoginWithButton(
+            onTap: sl<AuthenticationProvider>().facebookLogIn,
             icon: AppIconPaths.facebook,
             height: sl<ScreenSize>().getHeightPercent(.072),
             iconSize: sl<ScreenSize>().getHeightPercent(.03),
@@ -18,7 +19,19 @@ class LoginWithButtonsRow extends StatelessWidget {
         const SizedBox(width: 8),
         Expanded(
           child: LoginWithButton(
-            onTap: () {},
+            onTap: () async {
+              final GoogleSignInAccount? gUser = await GoogleSignIn().signIn();
+
+              final GoogleSignInAuthentication gAuth =
+                  await gUser!.authentication;
+
+              final credential = GoogleAuthProvider.credential(
+                accessToken: gAuth.accessToken,
+                idToken: gAuth.idToken,
+              );
+
+              await FirebaseAuth.instance.signInWithCredential(credential);
+            },
             icon: AppIconPaths.google,
             height: sl<ScreenSize>().getHeightPercent(.072),
             iconSize: sl<ScreenSize>().getHeightPercent(.03),
@@ -27,6 +40,7 @@ class LoginWithButtonsRow extends StatelessWidget {
         const SizedBox(width: 8),
         Expanded(
           child: LoginWithButton(
+            onTap: sl<AuthenticationProvider>().twitterLogIn,
             icon: AppIconPaths.twitter,
             height: sl<ScreenSize>().getHeightPercent(.072),
             iconSize: sl<ScreenSize>().getHeightPercent(.03),
