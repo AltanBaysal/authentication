@@ -15,7 +15,7 @@ class HomePage extends StatelessWidget {
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.037)),
         if (FirebaseAuth.instance.currentUser?.displayName != null) ...[
           Text(
-            "Hi ${FirebaseAuth.instance.currentUser?.displayName}",
+            AppTexts.hi + FirebaseAuth.instance.currentUser!.displayName!,
             style: AppTextStyles.title30BoldBlack,
           ),
         ],
@@ -26,7 +26,7 @@ class HomePage extends StatelessWidget {
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.037)),
         FilledLongButton(
           onTap: sl<AuthenticationProvider>().signOut,
-          text: "Log out",
+          text: AppTexts.logOut,
         ),
       ],
     );

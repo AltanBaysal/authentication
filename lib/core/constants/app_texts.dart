@@ -8,6 +8,7 @@ class AppTexts {
   static const String email = "Email";
   static const String password = "Password";
   static const String required = "Required";
+  static const String hi = "Hi, ";
   //2
   static const String sendCode = "Send Code";
   static const String passwordChanged = "Password Changed!";
@@ -28,7 +29,7 @@ class AppTexts {
   static const String enterYourEmail = "Enter your email";
   static const String enterYourPassword = "Enter your password";
   static const String orLoginWith = "Or Login with";
-  static const String youSuccessfullyLogin = "You successfully logged in";
+  static const String youSuccessfullyLogin = "You successfully logged in.";
   static const String agreeAndRegister = "Agree and Register";
   static const String didntReceivedCode = "Didn’t received code?";
   static const String somethingWentWrong = "Something went wrong";

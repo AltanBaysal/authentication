@@ -27,6 +27,16 @@ class AuthenticationProvider extends ChangeNotifier {
 
   Future<void> signOut() async {
     final resultEither = await signOutUsecase(NoParams());
+    resultEither.fold(
+      (l) {
+        if (l.message != null) {
+          _showSnackBar(l.message!);
+        }
+      },
+      (r) {
+        RouteManager.pushReplacementNamed(AppRoutes.logInPage);
+      },
+    );
   }
 
   Future<void> emailSignIn() async {
