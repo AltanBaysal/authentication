@@ -9,13 +9,24 @@ class HomePage extends StatelessWidget {
       children: [
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.3)),
         AppSvgPicture(
-          svg: AppIconPaths.nice,
-          height: sl<ScreenSize>().getWidthPercent(.27),
+          svg: AppIconPaths.cuteWatermelon,
+          height: sl<ScreenSize>().getWidthPercent(.35),
         ),
         SizedBox(height: sl<ScreenSize>().getHeightPercent(.037)),
+        if (FirebaseAuth.instance.currentUser?.displayName != null) ...[
+          Text(
+            "Hi ${FirebaseAuth.instance.currentUser?.displayName}",
+            style: AppTextStyles.title30BoldBlack,
+          ),
+        ],
         Text(
           AppTexts.youSuccessfullyLogin,
           style: AppTextStyles.title30BoldBlack,
+        ),
+        SizedBox(height: sl<ScreenSize>().getHeightPercent(.037)),
+        FilledLongButton(
+          onTap: sl<AuthenticationProvider>().signOut,
+          text: "Log out",
         ),
       ],
     );

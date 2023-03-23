@@ -1,4 +1,7 @@
+import 'dart:developer';
+
 import 'package:authentication/core/_core_exports.dart';
+import 'package:dartz/dartz.dart';
 
 //todo service locatordan al
 class AuthenticationProvider extends ChangeNotifier {
@@ -20,50 +23,103 @@ class AuthenticationProvider extends ChangeNotifier {
     required this.twitterLogInUsecase,
   });
 
+  AuthenticationMode mode = AuthenticationMode.auth;
+
   Future<void> signOut() async {
     final resultEither = await signOutUsecase(NoParams());
   }
 
   Future<void> emailSignIn() async {
-    //TODO
-    final emailSignInParam =
-        EmailSignInParam(email: "a@gmail.com", password: "123456");
-    final resultEither = await emailSignInUsecase(emailSignInParam);
+    _logIn(() async {
+      final emailSignInParam = EmailSignInParam(
+        email: "a@gmail.com",
+        password: "123456",
+      );
+      return await emailSignInUsecase(emailSignInParam);
+    });
   }
 
   Future<void> emailLogIn() async {
-    //TODO
-    final emailLogInParam = EmailLogInParam(email: "", password: "");
-    final resultEither = await emailLogInUsecase(emailLogInParam);
+    _logIn(() async {
+      final emailLogInParam = EmailLogInParam(email: "", password: "");
+      return await emailLogInUsecase(emailLogInParam);
+    });
   }
 
   Future<void> facebookLogIn() async {
-    //TODO
-    final resultEither = await facebookLoginUsecase(NoParams());
+    _logIn(() async {
+      return await facebookLoginUsecase(NoParams());
+    });
   }
 
   Future<void> googleLogIn() async {
-    //TODO
-    final GoogleSignInAccount? gUser = await GoogleSignIn().signIn();
-
-    final GoogleSignInAuthentication gAuth = await gUser!.authentication;
-
-    final credential = GoogleAuthProvider.credential(
-      accessToken: gAuth.accessToken,
-      idToken: gAuth.idToken,
-    );
-
-    await FirebaseAuth.instance.signInWithCredential(credential);
-    /*
-    final resultEither = await googleLoginUsecase(NoParams());
-    */
+    _logIn(() async {
+      return await googleLoginUsecase(NoParams());
+    });
   }
 
   Future<void> twitterLogIn() async {
-    final resultEither = await twitterLogInUsecase(NoParams());
+    _logIn(() async {
+      return await twitterLogInUsecase(NoParams());
+    });
   }
 
-  void logIn() {
-    //RouteManager.pushReplacementNamed(AppRoutes.homePage);
+  //
+  Future<void> _logIn(
+    Future<Either<Failure, UserCredential>> Function() func,
+  ) async {
+    mode = AuthenticationMode.inProgress;
+    notifyListeners();
+    _showLoadingDialog();
+
+    final resultEither = await func();
+
+    RouteManager.back();
+    resultEither.fold(
+      (left) {
+        if (left.message != null) {
+          _showSnackBar(left.message!);
+        }
+      },
+      (right) {
+        mode = AuthenticationMode.loggedIn;
+        RouteManager.pushReplacementNamed(AppRoutes.homePage);
+      },
+    );
+  }
+
+  Future<void> _showLoadingDialog() async {
+    await showDialog(
+      context: GlobalContextKey.instance.globalKey.currentContext!,
+      barrierDismissible: false,
+      builder: (final _) => const Center(
+        child: CircularProgressIndicator.adaptive(),
+      ),
+    );
+  }
+
+  Future<void> _showSnackBar(String text) async {
+    ScaffoldMessenger.of(GlobalContextKey.instance.globalKey.currentContext!)
+        .showSnackBar(
+      SnackBar(
+        duration: const Duration(seconds: 3),
+        margin: const EdgeInsets.only(bottom: 64),
+        backgroundColor: AppColors.transparentRed,
+        behavior: SnackBarBehavior.floating,
+        elevation: 0,
+        content: Container(
+          height: sl<ScreenSize>().getHeightPercent(.04),
+          width: sl<ScreenSize>().getWidthPercent(.3),
+          padding: const EdgeInsets.all(2),
+          alignment: Alignment.center,
+          child: Text(
+            text,
+            style: AppTextStyles.body15SemiBold.copyWith(
+              color: Colors.black,
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }

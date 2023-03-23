@@ -63,6 +63,8 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
     return _errorHandler<UserCredential>(() async {
       final LoginResult result = await FacebookAuth.instance.login();
 
+      if (result.accessToken == null) return Left(InvalidCredentialFailure());
+
       final OAuthCredential credential = FacebookAuthProvider.credential(
         result.accessToken!.token,
       );
@@ -77,7 +79,9 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
       () async {
         final GoogleSignInAccount? gUser = await GoogleSignIn().signIn();
 
-        final GoogleSignInAuthentication gAuth = await gUser!.authentication;
+        if (gUser == null) return Left(InvalidCredentialFailure());
+
+        final GoogleSignInAuthentication gAuth = await gUser.authentication;
 
         final credential = GoogleAuthProvider.credential(
           accessToken: gAuth.accessToken,
@@ -109,9 +113,6 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
   Future<Either<Failure, UserCredential>> _firebaseCredentialLogIn(
     AuthCredential credential,
   ) async {
-    if (!await networkInfo.isConnected) {
-      return Left(NoInternetConnectionFailure());
-    }
     return Right(
       await FirebaseAuth.instance.signInWithCredential(credential),
     );
@@ -120,6 +121,9 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
   Future<Either<Failure, T>> _errorHandler<T>(
     Future<Either<Failure, T>> Function() func,
   ) async {
+    if (!await networkInfo.isConnected) {
+      return Left(NoInternetConnectionFailure());
+    }
     try {
       return func();
     } on FirebaseAuthException catch (e) {

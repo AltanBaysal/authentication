@@ -26,4 +26,14 @@ class RouteManager {
     return GlobalContextKey.instance.globalKey.currentState
         ?.pushReplacementNamed(path, arguments: arguments);
   }
+
+  static dynamic back({final Object? arguments}) async {
+    if (GlobalContextKey.instance.globalKey.currentState != null) {
+      ScaffoldMessenger.of(
+        GlobalContextKey.instance.globalKey.currentContext!,
+      ).clearSnackBars();
+
+      return GlobalContextKey.instance.globalKey.currentState?.pop(arguments);
+    }
+  }
 }

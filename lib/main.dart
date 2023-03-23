@@ -42,14 +42,10 @@ class Authentication extends StatelessWidget {
 //native splash screen +
 //functional programing +
 //async programing +
-//gmail facebook apple email auth +
+//gmail facebook twitter email auth +
 //hive
 //auto login
 
 //todo
-//showdialog with circule progress indicator
-//show error like wrong password
-//handle exceptions
-//refactor errorview
 //look at svg
-//look at error handler
+//update error dialog
