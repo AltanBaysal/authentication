@@ -1,6 +1,5 @@
 export 'auth_back_button.dart';
 export 'base_authentication_page.dart';
-export 'filled_long_button.dart';
 export 'forgot_password.dart';
 export 'header_text.dart';
 export 'lined_text.dart';

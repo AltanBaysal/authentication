@@ -11,4 +11,5 @@ class AppIconPaths {
   static const String facebook = "assets/images/facebook_logo.svg";
   static const String google = "assets/images/google_logo.svg";
   static const String appLogoSvg = "assets/images/watermelon.svg";
+  static const String cuteWatermelon = "assets/images/cute_watermelon.svg";
 }

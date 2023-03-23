@@ -19,19 +19,7 @@ class LoginWithButtonsRow extends StatelessWidget {
         const SizedBox(width: 8),
         Expanded(
           child: LoginWithButton(
-            onTap: () async {
-              final GoogleSignInAccount? gUser = await GoogleSignIn().signIn();
-
-              final GoogleSignInAuthentication gAuth =
-                  await gUser!.authentication;
-
-              final credential = GoogleAuthProvider.credential(
-                accessToken: gAuth.accessToken,
-                idToken: gAuth.idToken,
-              );
-
-              await FirebaseAuth.instance.signInWithCredential(credential);
-            },
+            onTap: sl<AuthenticationProvider>().googleLogIn,
             icon: AppIconPaths.google,
             height: sl<ScreenSize>().getHeightPercent(.072),
             iconSize: sl<ScreenSize>().getHeightPercent(.03),

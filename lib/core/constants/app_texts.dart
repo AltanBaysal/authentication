@@ -19,6 +19,7 @@ class AppTexts {
   static const String rememberPassword = "Remember Password?";
   static const String otpVerification = "OTP Verification";
   static const String forgotPassword = "Forgot Password?";
+  static const String logOut = "Log out";
 
   //3
   static const String invalidEmailFormat = "Invalid email format";
@@ -27,7 +28,7 @@ class AppTexts {
   static const String enterYourEmail = "Enter your email";
   static const String enterYourPassword = "Enter your password";
   static const String orLoginWith = "Or Login with";
-  static const String youSuccessfullyLogin = "You successfully login";
+  static const String youSuccessfullyLogin = "You successfully logged in";
   static const String agreeAndRegister = "Agree and Register";
   static const String didntReceivedCode = "Didn’t received code?";
   static const String somethingWentWrong = "Something went wrong";
@@ -44,4 +45,10 @@ class AppTexts {
       "Your password has been changed successfully.";
   static const String otpVerificationMessage =
       "Enter the verification code we just sent on your email address.";
+
+  //Errors
+  static const String weakPassword = "Weak Password";
+  static const String emailAlreadyInUse = "Email Already In Use";
+  static const String wrongPasswordOrEmail = "Wrong Password or Email";
+  static const String noInternetConnection = "No Internet Connection";
 }
