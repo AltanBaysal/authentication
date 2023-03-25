@@ -1,7 +1,6 @@
 import 'package:authentication/core/_core_exports.dart';
 import 'package:dartz/dartz.dart';
 
-//TODO
 class TwitterLogInUsecase implements UseCase<UserCredential, NoParams> {
   final AuthenticationRepository authenticationRepository;
 
