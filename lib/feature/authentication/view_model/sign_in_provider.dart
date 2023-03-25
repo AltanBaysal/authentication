@@ -39,7 +39,16 @@ class SignInProvider extends ChangeNotifier {
     );
   }
 
+  //TODO hata mesajını göster
+  bool get isPasswordsConfirmed {
+    return confirmPasswordTextEditingController.text ==
+        passwordTextEditingController.text;
+  }
+
   bool get isFormValid {
-    return (isEmailValid && isPasswordValid && isConfirmPasswordValid);
+    return (isEmailValid &&
+        isPasswordValid &&
+        isConfirmPasswordValid &&
+        isPasswordsConfirmed);
   }
 }

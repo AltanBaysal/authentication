@@ -2,7 +2,7 @@ import 'package:authentication/core/_core_exports.dart';
 
 extension FirebaseAuthExceptionExtension on FirebaseAuthException {
   Failure get toFailure {
-    switch (message) {
+    switch (code) {
       case "user-not-found":
         return UserNotFoundFailure();
       case "wrong-password":
@@ -30,7 +30,7 @@ extension FirebaseAuthExceptionExtension on FirebaseAuthException {
       case "expired-action-code":
         return WrongPasswordFailure();
       default:
-        throw UnImplementedFailure();
+        return UnImplementedFailure();
     }
   }
 }

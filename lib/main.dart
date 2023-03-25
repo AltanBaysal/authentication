@@ -1,9 +1,15 @@
 import 'package:authentication/core/_core_exports.dart';
 
+final ProviderContainer a = ProviderContainer();
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await init();
-  runApp(const ProviderScope(child: Authentication()));
+  runApp(
+    ProviderScope(
+      parent: a,
+      child: const Authentication(),
+    ),
+  );
 }
 
 class Authentication extends StatelessWidget {
@@ -43,9 +49,11 @@ class Authentication extends StatelessWidget {
 //functional programing +
 //async programing +
 //gmail facebook twitter email auth +
+
 //hive
 //auto login
 
 //todo
 //look at svg
+//error yapısını geliştir
 //update error dialog

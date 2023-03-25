@@ -26,9 +26,6 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
   ) async {
     return _errorHandler<UserCredential>(
       () async {
-        if (!await networkInfo.isConnected) {
-          return Left(NoInternetConnectionFailure());
-        }
         final UserCredential credential =
             await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: params.email,
@@ -45,9 +42,6 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
   ) async {
     return _errorHandler<UserCredential>(
       () async {
-        if (!await networkInfo.isConnected) {
-          return Left(NoInternetConnectionFailure());
-        }
         final UserCredential credential =
             await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: params.email,
@@ -98,7 +92,6 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
     return _errorHandler<UserCredential>(() async {
       //TODO unimplemented
       throw UnimplementedError();
-      //return _firebaseCredentialLogIn(credential);
     });
   }
 
@@ -125,7 +118,7 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
       return Left(NoInternetConnectionFailure());
     }
     try {
-      return func();
+      return await func();
     } on FirebaseAuthException catch (e) {
       return Left(e.toFailure);
     } catch (e) {

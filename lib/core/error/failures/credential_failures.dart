@@ -24,7 +24,7 @@ class InvalidEmailFailure extends Failure {
   List<Object?> get props => [];
 
   @override
-  String? get message => null;
+  String? get message => AppTexts.invalidEmailFormat;
 }
 
 //Thrown if there already exists an account with the given email address.

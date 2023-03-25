@@ -6,10 +6,12 @@ class AppIconPaths {
   static const String nice = "assets/images/nice.svg";
   static const String cross = "assets/images/cross.svg";
   static const String error = "assets/images/error.svg";
+  static const String cuteWatermelon = "assets/images/cute_watermelon.svg";
+  static const String readingBookWatermelon =
+      "assets/images/reading_book_watermelon.svg";
 
   static const String twitter = "assets/images/twitter_logo.svg";
   static const String facebook = "assets/images/facebook_logo.svg";
   static const String google = "assets/images/google_logo.svg";
   static const String appLogoSvg = "assets/images/watermelon.svg";
-  static const String cuteWatermelon = "assets/images/cute_watermelon.svg";
 }

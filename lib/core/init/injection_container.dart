@@ -10,18 +10,6 @@ Future<void> init() async {
 
 Future<void> initFeatures() async {
   //providers
-  sl.registerLazySingleton<CreateNewPasswordProvider>(
-    () => CreateNewPasswordProvider(),
-  );
-  sl.registerLazySingleton<ForgotPasswordProvider>(
-    () => ForgotPasswordProvider(),
-  );
-  sl.registerLazySingleton<LogInProvider>(
-    () => LogInProvider(),
-  );
-  sl.registerLazySingleton<SignInProvider>(
-    () => SignInProvider(),
-  );
   sl.registerLazySingleton<AuthenticationProvider>(
     () => AuthenticationProvider(
       autoLoginUsecase: sl(),

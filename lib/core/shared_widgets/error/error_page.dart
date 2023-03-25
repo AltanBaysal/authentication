@@ -11,7 +11,7 @@ class ErrorPage extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             AppSvgPicture(
-              svg: AppIconPaths.cross,
+              svg: AppIconPaths.readingBookWatermelon,
               height: sl<ScreenSize>().getWidthPercent(.27),
             ),
             SizedBox(height: sl<ScreenSize>().getHeightPercent(.037)),

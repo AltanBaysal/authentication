@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:authentication/core/_core_exports.dart';
 import 'package:dartz/dartz.dart';
 
@@ -40,20 +38,30 @@ class AuthenticationProvider extends ChangeNotifier {
   }
 
   Future<void> emailSignIn() async {
-    _logIn(() async {
+    final signInProvider = AppProviderContainer.instance.read(Providers.signIn);
+    if (signInProvider.isFormValid) {
       final emailSignInParam = EmailSignInParam(
-        email: "a@gmail.com",
-        password: "123456",
+        email: signInProvider.eMailTextEditingController.text,
+        password: signInProvider.passwordTextEditingController.text,
       );
-      return await emailSignInUsecase(emailSignInParam);
-    });
+      _logIn(() async {
+        return await emailSignInUsecase(emailSignInParam);
+      });
+    }
   }
 
   Future<void> emailLogIn() async {
-    _logIn(() async {
-      final emailLogInParam = EmailLogInParam(email: "", password: "");
-      return await emailLogInUsecase(emailLogInParam);
-    });
+    final logInProvider = AppProviderContainer.instance.read(Providers.logIn);
+    if (logInProvider.isFormValid) {
+      final emailLogInParam = EmailLogInParam(
+        email: logInProvider.eMailTextEditingController.text,
+        password: logInProvider.passwordTextEditingController.text,
+      );
+
+      _logIn(() async {
+        return await emailLogInUsecase(emailLogInParam);
+      });
+    }
   }
 
   Future<void> facebookLogIn() async {
@@ -87,9 +95,7 @@ class AuthenticationProvider extends ChangeNotifier {
     RouteManager.back();
     resultEither.fold(
       (left) {
-        if (left.message != null) {
-          _showSnackBar(left.message!);
-        }
+        _showSnackBar(left.message ?? AppTexts.somethingWentWrong);
       },
       (right) {
         mode = AuthenticationMode.loggedIn;

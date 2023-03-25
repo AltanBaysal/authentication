@@ -36,7 +36,7 @@ class AppTexts {
 
   //
   static const String welcomebackGladToSeeYouAgain =
-      "Welcome back! Glad to see you, Again!";
+      "Welcome back! Glad to see you, again!";
   static const String dontHaveAnAccount = "Don’t have an account?";
   static const String createNewPasswordInfo =
       "Your new password must be unique from those previously used.";
