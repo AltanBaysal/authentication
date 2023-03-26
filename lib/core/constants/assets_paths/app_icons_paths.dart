@@ -7,6 +7,7 @@ class AppIconPaths {
   static const String cross = "assets/images/cross.svg";
   static const String error = "assets/images/error.svg";
   static const String cuteWatermelon = "assets/images/cute_watermelon.svg";
+  static const String happyWatermelon = "assets/images/happy_melon.svg";
   static const String readingBookWatermelon =
       "assets/images/reading_book_watermelon.svg";
 

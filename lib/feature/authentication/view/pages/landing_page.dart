@@ -16,8 +16,8 @@ class LandingPage extends StatelessWidget {
           children: [
             SizedBox(height: sl<ScreenSize>().getHeightPercent(.041)),
             AppSvgPicture(
-              svg: AppIconPaths.appLogoSvg,
-              height: sl<ScreenSize>().getWidthPercent(.27),
+              svg: AppIconPaths.happyWatermelon,
+              height: sl<ScreenSize>().getWidthPercent(.32),
             ),
             SizedBox(height: sl<ScreenSize>().getHeightPercent(.037)),
             const CircularProgressIndicator.adaptive(),
